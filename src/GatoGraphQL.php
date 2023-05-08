@@ -7,16 +7,17 @@ namespace GatoGraphQL\GatoGraphQL;
 use GatoGraphQL\GatoGraphQL\Services\Helpers\EndpointHelpers;
 use PoP\Root\Facades\Instances\InstanceManagerFacade;
 
-final class GatoGraphQL
+class GatoGraphQL
 {
     private static ?EndpointHelpers $endpointHelpers = null;
 
-    final static private function getEndpointHelpers(): EndpointHelpers
+    final protected static function getEndpointHelpers(): EndpointHelpers
     {
         if (self::$endpointHelpers === null) {
             $instanceManager = InstanceManagerFacade::getInstance();
             /** @var EndpointHelpers */
-            self::$endpointHelpers = $instanceManager->getInstance(EndpointHelpers::class);
+            $endpointHelpers = $instanceManager->getInstance(EndpointHelpers::class);
+            self::$endpointHelpers = $endpointHelpers;
         }
         return self::$endpointHelpers;
     }
@@ -31,9 +32,9 @@ final class GatoGraphQL
      * Settings page (for the selected Schema Configuration and/or
      * default values).
      */
-    public static function getAdminEndpoint(): string
+    final public static function getAdminEndpoint(): string
     {
-        return static::getEndpointHelpers()->getAdminGraphQLEndpoint();
+        return self::getEndpointHelpers()->getAdminGraphQLEndpoint();
     }
 
     /**
@@ -47,9 +48,9 @@ final class GatoGraphQL
      * Settings page; it has a pre-defined non-restrictive configuration,
      * allowing to fetch any piece of data.
      */
-    public static function getAdminBlockEditorEndpoint(): string
+    final public static function getAdminBlockEditorEndpoint(): string
     {
-        return static::getEndpointHelpers()->getAdminBlockEditorGraphQLEndpoint();
+        return self::getEndpointHelpers()->getAdminBlockEditorGraphQLEndpoint();
     }
 
     /**
@@ -63,8 +64,8 @@ final class GatoGraphQL
      *
      * See the Recipes section to learn how to define a custom private endpoint.
      */
-    public static function getAdminCustomEndpoint(string $endpointGroup): string
+    final public static function getAdminCustomEndpoint(string $endpointGroup): string
     {
-        return static::getEndpointHelpers()->getAdminGraphQLEndpoint($endpointGroup);
+        return self::getEndpointHelpers()->getAdminGraphQLEndpoint($endpointGroup);
     }
 }
