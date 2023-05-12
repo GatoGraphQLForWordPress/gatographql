@@ -8,7 +8,6 @@ use GatoGraphQL\GatoGraphQL\App;
 use GatoGraphQL\GatoGraphQL\Constants\HTMLCodes;
 use GatoGraphQL\GatoGraphQL\Constants\RequestParams;
 use GatoGraphQL\GatoGraphQL\PluginApp;
-use WP_Error;
 use WP_Plugin_Install_List_Table;
 use stdClass;
 
@@ -16,6 +15,7 @@ use stdClass;
  * The file containing class WP_Plugin_Install_List_Table is not
  * loaded by default in WordPress.
  */
+
 require_once ABSPATH . 'wp-admin/includes/class-wp-plugin-install-list-table.php';
 
 /**
@@ -26,26 +26,24 @@ class ExtensionListTable extends WP_Plugin_Install_List_Table implements ItemLis
     use ItemListTableTrait;
 
     /**
-	 * @global array  $tabs
-	 * @global string $tab
-	 * @global int    $paged
-	 * @global string $type
-	 * @global string $term
-	 */
-	public function prepare_items() {
-		
+     * @return void
+     * phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+     */
+    public function prepare_items()
+    {
+
         add_filter('install_plugins_tabs', $this->overrideInstallPluginTabs(...));
         add_filter('install_plugins_nonmenu_tabs', $this->overrideInstallPluginNonMenuTabs(...));
         add_filter('plugins_api', $this->overridePluginsAPI(...));
         add_filter('plugins_api_result', $this->overridePluginsAPIResult(...));
         add_filter('plugin_install_action_links', $this->overridePluginInstallActionLinks(...), 10, 2);
         parent::prepare_items();
-        remove_filter('plugin_install_action_links', $this->overridePluginInstallActionLinks(...), 10, 2);
+        remove_filter('plugin_install_action_links', $this->overridePluginInstallActionLinks(...), 10);
         remove_filter('plugins_api_result', $this->overridePluginsAPIResult(...));
         remove_filter('plugins_api', $this->overridePluginsAPI(...));
         remove_filter('install_plugins_nonmenu_tabs', $this->overrideInstallPluginNonMenuTabs(...));
         remove_filter('install_plugins_tabs', $this->overrideInstallPluginTabs(...));
-	}
+    }
 
     /**
      * Keep only the "Featured" tab
@@ -56,8 +54,8 @@ class ExtensionListTable extends WP_Plugin_Install_List_Table implements ItemLis
     public function overrideInstallPluginTabs(array $tabs): array
     {
         return array_intersect_key(
-            ['featured' => true],
-            $tabs
+            $tabs,
+            ['featured' => true]
         );
     }
 
@@ -126,11 +124,11 @@ class ExtensionListTable extends WP_Plugin_Install_List_Table implements ItemLis
         if (str_starts_with($action_links[0] ?? '', '<a class="install-now button"')) {
             $action_links[0] = sprintf(
                 '<a class="install-now button" data-slug="%s" href="%s" aria-label="%s" data-name="%s" target="%s">%s%s</a>',
-                esc_attr( $plugin['slug'] ),
-                esc_url( $plugin['homepage'] ),
+                esc_attr($plugin['slug']),
+                esc_url($plugin['homepage']),
                 /* translators: %s: Plugin name and version. */
-                esc_attr( sprintf( _x( 'Get extension %s', 'plugin' ), $plugin['name'] ) ),
-                esc_attr( $plugin['name'] ),
+                esc_attr(sprintf(_x('Get extension %s', 'plugin'), $plugin['name'])),
+                esc_attr($plugin['name']),
                 '_blank',
                 __('Get Extension', 'gato-graphql'),
                 HTMLCodes::OPEN_IN_NEW_WINDOW
@@ -139,34 +137,46 @@ class ExtensionListTable extends WP_Plugin_Install_List_Table implements ItemLis
         return $action_links;
     }
 
-    public function no_items() {
-		if ( isset( $this->error ) ) {
+    /**
+     * @return void
+     * phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+     */
+    public function no_items()
+    {
+        if (isset($this->error)) {
             parent::no_items();
         } else { ?>
-			<div class="no-plugin-results"><?php _e('Ooops something went wrong: No extensions found. Please contact the admin.', 'gato-graphql'); ?></div>
-			<?php
-		}
-	}
+            <div class="no-plugin-results"><?php _e('Ooops something went wrong: No extensions found. Please contact the admin.', 'gato-graphql'); ?></div>
+            <?php
+        }
+    }
 
-	/**
+    /**
      * Adapt the generated HTML content
+     * @return void
+     * phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
      */
-    public function display_rows() {
-		ob_start();
+    public function display_rows()
+    {
+        ob_start();
         parent::display_rows();
-		$html = ob_get_clean();
+        $html = ob_get_clean();
+
+        if ($html === false) {
+            return;
+        }
 
         $html = $this->adaptDisplayRowsHTML($html);
 
-		echo $html;
-	}
+        echo $html;
+    }
 
-	/**
+    /**
      * Adapt the generated HTML content
      */
     protected function adaptDisplayRowsHTML(string $html): string
     {
-        foreach ( (array) $this->items as $plugin ) {
+        foreach ((array) $this->items as $plugin) {
             /**
              * Change the "More information" link to open the
              * extension website, and not the plugin page
@@ -193,6 +203,6 @@ class ExtensionListTable extends WP_Plugin_Install_List_Table implements ItemLis
             );
         }
 
-		return $html;
-	}
+        return $html;
+    }
 }
