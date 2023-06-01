@@ -11,12 +11,14 @@ use GatoGraphQL\GatoGraphQL\Module;
 use GatoGraphQL\GatoGraphQL\ModuleConfiguration;
 use GatoGraphQL\GatoGraphQL\ModuleResolvers\Extensions\ExtensionModuleResolverInterface;
 use GatoGraphQL\GatoGraphQL\Registries\ModuleRegistryInterface;
+use GatoGraphQL\GatoGraphQL\Services\MenuPages\ExtensionsMenuPage;
 
 class ExtensionDocsMenuPage extends AbstractVerticalTabDocsMenuPage
 {
     use NoDocsFolderPluginMarkdownContentRetrieverTrait;
 
     private ?ModuleRegistryInterface $moduleRegistry = null;
+    private ?ExtensionsMenuPage $extensionsMenuPage = null;
 
     final public function setModuleRegistry(ModuleRegistryInterface $moduleRegistry): void
     {
@@ -26,6 +28,15 @@ class ExtensionDocsMenuPage extends AbstractVerticalTabDocsMenuPage
     {
         /** @var ModuleRegistryInterface */
         return $this->moduleRegistry ??= $this->instanceManager->getInstance(ModuleRegistryInterface::class);
+    }
+    final public function setExtensionsMenuPage(ExtensionsMenuPage $extensionsMenuPage): void
+    {
+        $this->extensionsMenuPage = $extensionsMenuPage;
+    }
+    final protected function getExtensionsMenuPage(): ExtensionsMenuPage
+    {
+        /** @var ExtensionsMenuPage */
+        return $this->extensionsMenuPage ??= $this->instanceManager->getInstance(ExtensionsMenuPage::class);
     }
 
     public function getMenuPageSlug(): string
@@ -55,15 +66,16 @@ class ExtensionDocsMenuPage extends AbstractVerticalTabDocsMenuPage
 
     protected function getPageHeaderHTML(): string
     {
-        /** @var ModuleConfiguration */
-        $moduleConfiguration = App::getModule(Module::class)->getConfiguration();
+        $extensionsMenuPage = $this->getExtensionsMenuPage();
         return sprintf(
             '<p>%s</p>',
             sprintf(
-                __('Extensions add functionality and expand the GraphQL schema. You can browse and get extensions on the <a href="%1$s" target="%2$s">Gato GraphQL shop%3$s</a>.', 'gato-graphql'),
-                $moduleConfiguration->getPROPluginShopURL(),
-                '_blank',
-                HTMLCodes::OPEN_IN_NEW_WINDOW,
+                __('%s <a href="%s" class="button">Switch to the <strong>Extensions</strong> view</a></span>', 'gato-graphql'),
+                $extensionsMenuPage->getHeaderMessage(),
+                \admin_url(sprintf(
+                    'admin.php?page=%s',
+                    $extensionsMenuPage->getScreenID()
+                )),
             )
         );
     }
