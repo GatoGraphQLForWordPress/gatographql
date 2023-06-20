@@ -743,7 +743,7 @@ Several standard custom scalar types have been implemented, so they are readily-
 - `StrictlyPositiveFloat`
 - `UUID`
 
-Please notice that these do not currently appear in the Interactive Schema client, as they are not being referenced anywhere within the WordPress model (as [defined by the spec](https://spec.graphql.org/October2021/#sec-Scalars.Built-in-Scalars), only types referenced by another type are reachable via introspection).
+Please notice that these do not currently appear in the Interactive Schema client, as they are not being referenced anywhere within the WordPress model (as <a href="https://spec.graphql.org/October2021/#sec-Scalars.Built-in-Scalars" target="_blank">defined by the spec</a>, only types referenced by another type are reachable via introspection).
 
 ## Sort the Schema Configuration entries by name
 
@@ -940,6 +940,10 @@ The Plugin Settings has been completely decoupled from the services registered i
 Before, the service container (upon which the GraphQL schema is based) was regenerated whenever any plugin (whether it was related to Gato GraphQL or not) was activated or deactivated.
 
 Now, only Gato GraphQL extension plugins trigger this process.
+
+## Generating the service container is faster (after upgrading to Symfony v6.3)
+
+The plugin has upgraded its Symfony dependencies to the latest v6.3, which <a href="https://symfony.com/blog/new-in-symfony-6-3-performance-improvements" target="_blank">offers performance improvements</a>.
 
 ## Fixed
 
