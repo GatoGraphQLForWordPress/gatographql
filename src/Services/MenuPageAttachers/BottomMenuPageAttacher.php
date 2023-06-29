@@ -317,27 +317,6 @@ class BottomMenuPageAttacher extends AbstractPluginMenuPageAttacher
             $this->getSettingsMenuPage()->setHookName($hookName);
         }
 
-        /**
-         * Only show the About page when actually loading it
-         * So it doesn't appear on the menu, but it's still available
-         * to display the release notes on the modal window
-         */
-        $aboutMenuPage = $this->getReleaseNoteOrAboutMenuPage();
-        if (App::query('page') === $aboutMenuPage->getScreenID()) {
-            if (
-                $hookName = \add_submenu_page(
-                    $menuName,
-                    __('About', 'gato-graphql'),
-                    __('About', 'gato-graphql'),
-                    'manage_options',
-                    $aboutMenuPage->getScreenID(),
-                    [$aboutMenuPage, 'print']
-                )
-            ) {
-                $aboutMenuPage->setHookName($hookName);
-            }
-        }
-
         $recipesMenuPage = $this->getRecipesMenuPage();
         /**
          * @var callable
@@ -355,6 +334,27 @@ class BottomMenuPageAttacher extends AbstractPluginMenuPageAttacher
         ) {
             $recipesMenuPage->setHookName($hookName);
         }
+
+        /**
+         * Only show the About page when actually loading it
+         * So it doesn't appear on the menu, but it's still available
+         * to display the release notes on the modal window
+         */
+        $aboutMenuPage = $this->getReleaseNoteOrAboutMenuPage();
+        // if (App::query('page') === $aboutMenuPage->getScreenID()) {
+        if (
+            $hookName = \add_submenu_page(
+                $menuName,
+                __('About Gato GraphQL', 'gato-graphql'),
+                __('About Gato GraphQL', 'gato-graphql'),
+                'manage_options',
+                $aboutMenuPage->getScreenID(),
+                [$aboutMenuPage, 'print']
+            )
+        ) {
+            $aboutMenuPage->setHookName($hookName);
+        }
+        // }
     }
 
     /**
