@@ -1,58 +1,85 @@
-# Using Markdown to compose the email
+# Sending a daily summary of activity
 
+The following WP-Cron event executes hook `gato_graphql__execute_persisted_query` to send a daily email indicating the number of new comments added to the site:
 
+- In the last 24 hs
+- In the last 1 year
+- Since the beginning of the month
+- Since the beginning of the year
 
-
-	Add to some recipe (from submodules/PoP/layers/GatoGraphQLForWP/plugins/gato-graphql/docs-pro/modules/email-sender/en.md):
-
-The query below sends an email to the admin user with some post's content (eg: it can be triggered whenever a new post is published). It uses:
-
-- **Multiple Query Execution** to manage the query into logical units
-- Field `_strConvertMarkdownToHTML` from **Helper Fields** to compose the email message using Markdown
-- Fields `_strReplaceMultiple` and `_sprintf` from **Function Fields** to dynamically inject values into the email subject and message
-- **Field to Input** to retrieve and provide the admin's email from `wp_options`
+We create a Persisted Query with slug `"daily-stats-by-email-number-of-comments"` and content:
 
 ```graphql
-query GetPostData($postID: ID!) {
-  post(by: {id: $postID}) {
-    title @export(as: "postTitle")
-    excerpt @export(as: "postExcerpt")
-    url @export(as: "postLink")
-    author {
-      name @export(as: "postAuthorName")
-      url @export(as: "postAuthorLink")
-    }
-  }
+query CountComments {
+  DATE_ISO8601: _env(name: DATE_ISO8601) @remove
+
+  timeToday: _time
+  dateToday: _date(format: $__DATE_ISO8601, timestamp: $__timeToday)
+  
+  timeYesterday: _intSubstract(substract: 86400, from: $__timeToday)
+  dateYesterday: _date(format: $__DATE_ISO8601, timestamp: $__timeYesterday)
+  
+  time1YearAgo: _intSubstract(substract: 31536000, from: $__timeToday)
+  date1YearAgo: _date(format: $__DATE_ISO8601, timestamp: $__time1YearAgo)
+
+  timeBegOfThisMonth: _makeTime(hour: 0, minute: 0, second: 0, day: 1)
+  dateBegOfThisMonth: _date(format: $__DATE_ISO8601, timestamp: $__timeBegOfThisMonth)
+
+  timeBegOfThisYear: _makeTime(hour: 0, minute: 0, second: 0, month: 1, day: 1)
+  dateBegOfThisYear: _date(format: $__DATE_ISO8601, timestamp: $__timeBegOfThisYear)
+  
+  commentsAddedInLast24Hs: commentCount(filter: { dateQuery: { after: $__dateYesterday } } )
+    @export(as: "commentsAddedInLast24Hs")
+  commentsAddedInLast1Year: commentCount(filter: { dateQuery: { after: $__date1YearAgo } } )
+    @export(as: "commentsAddedInLast1Year")
+  commentsAddedSinceBegOfThisMonth: commentCount(filter: { dateQuery: { after: $__dateBegOfThisMonth } } )
+    @export(as: "commentsAddedSinceBegOfThisMonth")
+  commentsAddedSinceBegOfThisYear: commentCount(filter: { dateQuery: { after: $__dateBegOfThisYear } } )
+    @export(as: "commentsAddedSinceBegOfThisYear")
 }
 
-query GetEmailData @depends(on: "GetPostData") {
+query CreateEmailMessage @depends(on: "CountComments") {
   emailMessageTemplate: _strConvertMarkdownToHTML(
     text: """
 
-There is a new post by [{$postAuthorName}]({$postAuthorLink}):
+This is the number of comments added to the site:
 
-**{$postTitle}**: {$postExcerpt}
-
-[Read online]({$postLink})
+| Period | # Comments added |
+| --- | --- |
+| **In the last 24 hs**: | {$commentsAddedInLast24Hs} |
+| **In the last 365 days**: | {$commentsAddedInLast1Year} |
+| **Since beggining of this month**: | {$commentsAddedSinceBegOfThisMonth} |
+| **Since beggining of this year**: | {$commentsAddedSinceBegOfThisYear} |
 
     """
   )
   emailMessage: _strReplaceMultiple(
-    search: ["{$postAuthorName}", "{$postAuthorLink}", "{$postTitle}", "{$postExcerpt}", "{$postLink}"],
-    replaceWith: [$postAuthorName, $postAuthorLink, $postTitle, $postExcerpt, $postLink],
+    search: [
+      "{$commentsAddedInLast24Hs}",
+      "{$commentsAddedInLast1Year}",
+      "{$commentsAddedSinceBegOfThisMonth}",
+      "{$commentsAddedSinceBegOfThisYear}"
+    ],
+    replaceWith: [
+      $commentsAddedInLast24Hs,
+      $commentsAddedInLast1Year,
+      $commentsAddedSinceBegOfThisMonth,
+      $commentsAddedSinceBegOfThisYear
+    ],
     in: $__emailMessageTemplate
   )
     @export(as: "emailMessage")
-  subject: _sprintf(string: "New post created by %s", values: [$postAuthorName])
-    @export(as: "emailSubject")
 }
 
-mutation SendEmail @depends(on: "GetEmailData") {
-  adminEmail: optionValue(name: "admin_email")
+mutation SendDailyStatsByEmailNumberOfComments(
+  $to: [String!]!
+)
+  @depends(on: "CreateEmailMessage")
+{
   _sendEmail(
     input: {
-      to: $__adminEmail
-      subject: $emailSubject
+      to: $to
+      subject: "Daily stats: Number of new comments"
       messageAs: {
         html: $emailMessage
       }
@@ -63,56 +90,28 @@ mutation SendEmail @depends(on: "GetEmailData") {
 }
 ```
 
-		
-	
-	Add in some recipe:
-		content from send-email-with-content-from-post-and-markdown.gql:
-```graphql
-query GetPostData($postID: ID!) {
-	post(by: {id: $postID}) {
-		title @export(as: "postTitle")
-		excerpt @export(as: "postExcerpt")
-		url @export(as: "postLink")
-		author {
-			name @export(as: "postAuthorName")
-			url @export(as: "postAuthorLink")
-		}
-	}
-}
+Then, we schedule the WP-Cron event, either via PHP:
 
-query GetEmailData @depends(on: "GetPostData") {
-	emailMessageTemplate: _strConvertMarkdownToHTML(
-		text: """
-
-There is a new post by [{$postAuthorName}]({$postAuthorLink}):
-
-**{$postTitle}**: {$postExcerpt}
-
-[Read online]({$postLink})
-
-		"""
-	)
-	emailMessage: _strReplaceMultiple(
-		search: ["{$postAuthorName}", "{$postAuthorLink}", "{$postTitle}", "{$postExcerpt}", "{$postLink}"],
-		replaceWith: [$postAuthorName, $postAuthorLink, $postTitle, $postExcerpt, $postLink],
-		in: $__emailMessageTemplate
-	)
-		@export(as: "emailMessage")
-	subject: _sprintf(string: "New post created by %s", values: [$postAuthorName])
-		@export(as: "emailSubject")
-}
-
-mutation SendEmail @depends(on: "GetEmailData") {
-	_sendEmail(
-		input: {
-			to: "target@email.com"
-			subject: $emailSubject
-			messageAs: {
-				html: $emailMessage
-			}
-		}
-	) {
-		status
-	}
-}
+```php
+\wp_schedule_event(
+  time(),
+  'daily',
+  'gato_graphql__execute_persisted_query',
+  [
+    'daily-stats-by-email-number-of-comments',
+    [
+      'to' => ['admin@mysite.com']
+    ],
+    'SendDailyStatsByEmailNumberOfComments',
+    1 // This is the admin user's ID
+  ]
+);
 ```
+
+Or via the [WP-Crontrol](https://wordpress.org/plugins/wp-crontrol/) plugin:
+
+- Hook name: `gato_graphql__execute_persisted_query`
+- Arguments: `["daily-stats-by-email-number-of-comments",{"to":["admin@mysite.com"]},"SendDailyStatsByEmailNumberOfComments",1]`
+- Recurrence: Once Daily
+
+![New entry in WP-Crontrol](../../images/wp-crontrol-entry.png "New entry in WP-Crontrol")
