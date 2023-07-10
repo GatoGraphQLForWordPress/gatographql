@@ -1,6 +1,6 @@
 # Duplicating a blog post
 
-You can think of GraphQL as a Swiss Army Knife for dealing with data in a WordPress site, as it allows to retrieve, manipulate and store again any piece of data, in any desired way. Duplicating a post is an example of this ability.
+Duplicating a post is an example of Gato GraphQL's ability to retrieve, manipulate and store again data in the site.
 
 ## GraphQL query to duplicate blog post
 
@@ -688,7 +688,7 @@ query InitializeDynamicVariables {
   tagSlugs: _echo(value: []) @export(as: "tagSlugs")
 }
 
-query ExportData($postId: ID!)
+query ExportData
   @depends(on: "InitializeDynamicVariables")
 {
   post {
