@@ -289,18 +289,6 @@ class RecipesMenuPage extends AbstractVerticalTabDocsMenuPage
                 ]
             ],
             [
-                'automating-admin-tasks',
-                \__('Automating admin tasks', 'gato-graphql'),
-            ],
-            [
-                'sending-a-daily-summary-of-activity',
-                \__('Sending a daily summary of activity', 'gato-graphql'),
-            ],
-            [
-                'validating-that-a-new-post-contains-a-mandatory-block',
-                \__('Validating that a new post contains a mandatory block', 'gato-graphql')
-            ],
-            [
                 'inserting-a-gutenberg-block-in-all-posts',
                 \__('Inserting a Gutenberg block in all posts', 'gato-graphql'),
                 [
@@ -313,6 +301,18 @@ class RecipesMenuPage extends AbstractVerticalTabDocsMenuPage
                 'removing-a-gutenberg-block-from-all-posts',
                 \__('Removing a Gutenberg block from all posts', 'gato-graphql'),
             ],
+            [
+                'automating-admin-tasks',
+                \__('Automating admin tasks', 'gato-graphql'),
+            ],
+            [
+                'sending-a-daily-summary-of-activity',
+                \__('Sending a daily summary of activity', 'gato-graphql'),
+            ],
+            [
+                'validating-that-a-new-post-contains-a-mandatory-block',
+                \__('Validating that a new post contains a mandatory block', 'gato-graphql')
+            ],
             // [
             //     'converting-content-to-gutenberg-blocks',
             //      \__('Converting content to Gutenberg blocks', 'gato-graphql'),
@@ -320,14 +320,6 @@ class RecipesMenuPage extends AbstractVerticalTabDocsMenuPage
             [
                 'persisted-queries-as-webhooks',
                 \__('Persisted Queries as Webhooks', 'gato-graphql'),
-            ],
-            [
-                'bulk-editing-content',
-                \__('Bulk editing content', 'gato-graphql'),
-            ],
-            [
-                'reacting-to-events',
-                \__('Reacting to events', 'gato-graphql'),
             ],
             [
                 'interacting-with-3rd-party-service-apis',
@@ -344,6 +336,10 @@ class RecipesMenuPage extends AbstractVerticalTabDocsMenuPage
             [
                 'transforming-data-from-an-external-api',
                 \__('Transforming data from an external API', 'gato-graphql'),
+            ],
+            [
+                'splitting-a-big-db-update-via-recursive-queries',
+                \__('Splitting a big DB update via recursive queries', 'gato-graphql'),
             ],
             [
                 'translating-block-content-in-a-post-to-a-different-language',
