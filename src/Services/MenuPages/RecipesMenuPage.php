@@ -292,6 +292,16 @@ class RecipesMenuPage extends AbstractVerticalTabDocsMenuPage
                 ]
             ],
             [
+                'inserting-removing-a-gutenberg-block-in-bulk',
+                \__('Inserting/Removing a (Gutenberg) block in bulk', 'gato-graphql'),
+                [
+                    ExtensionModuleResolver::FIELD_RESPONSE_REMOVAL,
+                    ExtensionModuleResolver::FIELD_TO_INPUT,
+                    ExtensionModuleResolver::MULTIPLE_QUERY_EXECUTION,
+                    ExtensionModuleResolver::PHP_FUNCTIONS_VIA_SCHEMA,
+                ],
+            ],
+            [
                 'sending-emails-with-pleasure',
                 \__('Sending emails with pleasure', 'gato-graphql'),
                 [
@@ -306,18 +316,20 @@ class RecipesMenuPage extends AbstractVerticalTabDocsMenuPage
                 ]
             ],
             [
-                'inserting-removing-a-gutenberg-block-in-bulk',
-                \__('Inserting/Removing a (Gutenberg) block in bulk', 'gato-graphql'),
+                'sending-a-notification-when-there-is-a-new-post',
+                \__('Sending a notification when there is a new post', 'gato-graphql'),
                 [
-                    ExtensionModuleResolver::FIELD_RESPONSE_REMOVAL,
+                    ExtensionModuleResolver::AUTOMATION,
+                    ExtensionModuleResolver::EMAIL_SENDER,
                     ExtensionModuleResolver::FIELD_TO_INPUT,
+                    ExtensionModuleResolver::HELPER_FUNCTION_COLLECTION,
+                    ExtensionModuleResolver::INTERNAL_GRAPHQL_SERVER,
                     ExtensionModuleResolver::MULTIPLE_QUERY_EXECUTION,
                     ExtensionModuleResolver::PHP_FUNCTIONS_VIA_SCHEMA,
                 ],
-            ],
-            [
-                'automating-admin-tasks',
-                \__('Automating admin tasks', 'gato-graphql'),
+                [
+                    BundleExtensionModuleResolver::APPLICATION_GLUE_AND_AUTOMATOR,
+                ]
             ],
             [
                 'sending-a-daily-summary-of-activity',
