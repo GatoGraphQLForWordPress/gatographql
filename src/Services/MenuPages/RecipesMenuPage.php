@@ -365,6 +365,7 @@ class RecipesMenuPage extends AbstractVerticalTabDocsMenuPage
                 'interacting-with-external-services-via-webhooks',
                 \__('Interacting with external services via webhooks', 'gato-graphql'),
                 [
+                    ExtensionModuleResolver::EMAIL_SENDER,
                     ExtensionModuleResolver::FIELD_TO_INPUT,
                     ExtensionModuleResolver::HTTP_REQUEST_VIA_SCHEMA,
                     ExtensionModuleResolver::MULTIPLE_QUERY_EXECUTION,
@@ -375,8 +376,12 @@ class RecipesMenuPage extends AbstractVerticalTabDocsMenuPage
                 ]
             ],
             [
-                'interacting-with-3rd-party-service-apis',
-                \__('Interacting with 3rd-party service APIs', 'gato-graphql'),
+                'retrieving-data-from-an-external-api',
+                \__('Retrieving data from an external API', 'gato-graphql'),
+            ],
+            [
+                'interacting-with-webapps-and-services',
+                \__('Interacting with webapps and services', 'gato-graphql'),
             ],
             [
                 'creating-an-api-gateway',
