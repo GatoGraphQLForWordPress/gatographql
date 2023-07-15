@@ -44,14 +44,32 @@ query FilterExternalAPIData {
 fail-if-external-api-has-errors.gql <= Check if to place it on this Recipe, or elsewhere
 
 ```graphql
-query ConnectToAPI($endpoint: String!) {
+query ExportDefaultDynamicVariables {
+  defaultEndpointHasErrors: _echo(value: true)
+    @export(as: "endpointHasErrors")
+    @remove
+}
+
+query ConnectToAPI($endpoint: String!)
+  @depends(on: "ExportDefaultDynamicVariables")
+{
   externalData: _sendJSONObjectItemHTTPRequest(
     input: {
       url: $endpoint
     }
   ) @export(as: "externalData")
-  _propertyIsSetInJSONObject(
-    object: $__externalData
+
+  isNullExternalData: _isNull(value: $__externalData)
+    @export(as: "isNullExternalData")
+    @remove
+}
+
+query ValidateAPIResponse
+  @depends(on: "ConnectToAPI")
+  @skip(if: $isNullExternalData)
+{
+  endpointHasErrors: _propertyIsSetInJSONObject(
+    object: $externalData
     by: {
       path: "data.status"
     }
@@ -59,8 +77,9 @@ query ConnectToAPI($endpoint: String!) {
 }
 
 query FailIfExternalAPIHasErrors($endpoint: String!)
+  @depends(on: "ValidateAPIResponse")
   @include(if: $endpointHasErrors)
-  @depends(on: "ConnectToAPI")
+  @skip(if: $isNullExternalData)
 {
   code: _objectProperty(
     object: $externalData,
@@ -91,6 +110,14 @@ query FailIfExternalAPIHasErrors($endpoint: String!)
       endpointData: $__data
     }
   ) @remove
+}
+
+query ExecuteSomeOperation
+  @depends(on: "FailIfExternalAPIHasErrors")
+  @skip(if: $endpointHasErrors)
+{
+  # Do something...
+  id
 }
 ```
 
