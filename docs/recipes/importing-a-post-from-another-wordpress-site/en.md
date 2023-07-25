@@ -30,6 +30,8 @@ query InitializeDynamicVariables
     @export(as: "requestProducedErrors")
     @export(as: "responseHasErrors")
     @export(as: "postIsMissing")
+    @export(as: "postHasAuthor")
+    @export(as: "postHasFeaturedImage")
     @export(as: "postHasCategories")
     @export(as: "postHasTags")
     @remove
@@ -261,6 +263,12 @@ query ExportInputs
     @export(as: "postAuthorUsername")
     @remove
 
+  postHasAuthor: _notNull(
+    value: $__postAuthorUsername
+  )
+    @export(as: "postHasAuthor")
+    @remove
+
   postFeaturedImageSlug: _objectProperty(
     object: $__postData,
     by: { key: "featuredImage" }
@@ -285,6 +293,12 @@ query ExportInputs
         setResultInResponse: true
       )
     @export(as: "postFeaturedImageSlug")
+    @remove
+
+  postHasFeaturedImage: _notNull(
+    value: $__postFeaturedImageSlug
+  )
+    @export(as: "postHasFeaturedImage")
     @remove
 
   postCategorySlugs: _objectProperty(
@@ -347,12 +361,16 @@ query ExportExistingResources
   @skip(if: $responseHasErrors)
   @skip(if: $postIsMissing)
 {
-  existingAuthorByUsername: user(by: { username: $postAuthorUsername }) {
+  existingAuthorByUsername: user(by: { username: $postAuthorUsername })
+    @include(if: $postHasAuthor)
+  {
     id
     username @export(as: "existingAuthorUsername")
   }
 
-  existingFeaturedImageBySlug: mediaItem(by: { slug: $postFeaturedImageSlug }) {
+  existingFeaturedImageBySlug: mediaItem(by: { slug: $postFeaturedImageSlug })
+    @include(if: $postHasFeaturedImage)
+  {
     id
     slug @export(as: "existingFeaturedImageSlug")
   }
