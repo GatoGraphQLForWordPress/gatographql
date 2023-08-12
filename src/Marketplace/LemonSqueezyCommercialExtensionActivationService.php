@@ -156,7 +156,7 @@ class LemonSqueezyCommercialExtensionActivationService implements MarketplacePro
          *
          * @var bool
          */
-        $isTestMode = $body['license_key']['test_mode'];
+        $isTestMode = $body['license_key']['test_mode'] ?? false;
         /**
          * Notice that we validate "-dev" against the main Gato GraphQL
          * plugin and not against the extension, but it still works
@@ -185,6 +185,7 @@ class LemonSqueezyCommercialExtensionActivationService implements MarketplacePro
         $instanceID = $body['instance']['id'] ?? null;
         /** @var string|null */
         $instanceName = $body['instance']['name'] ?? null;
+        
         /** @var string */
         $productName = $body['meta']['product_name'];
         /** @var string */
