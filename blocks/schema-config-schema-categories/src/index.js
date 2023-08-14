@@ -17,19 +17,19 @@ import { __ } from '@wordpress/i18n';
  */
 import EditBlock from './edit';
 
-const defaultCategoryTaxonomies = window.gatoGraphqlSchemaConfigSchemaCategories.defaultCategoryTaxonomies;
+const defaultCategoryTaxonomies = window.gatographqlSchemaConfigSchemaCategories.defaultCategoryTaxonomies;
 
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType( 'gato-graphql/schema-config-schema-categories', {
+registerBlockType( 'gatographql/schema-config-schema-categories', {
 	/**
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
 	 */
-	title: __( 'Categories', 'gato-graphql' ),
+	title: __( 'Categories', 'gatographql' ),
 
 	/**
 	 * This is a short description for your block, can be translated with `i18n` functions.
@@ -37,14 +37,14 @@ registerBlockType( 'gato-graphql/schema-config-schema-categories', {
 	 */
 	description: __(
 		'Configure allowed category taxonomies in the Schema Configuration',
-		'gato-graphql'
+		'gatographql'
 	),
 
 	/**
 	 * Blocks are grouped into categories to help users browse and discover them.
 	 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
 	 */
-	category: 'gato-graphql-schema-config',
+	category: 'gatographql-schema-config',
 
 	/**
 	 * An icon property should be specified to make it easier to identify a block.
@@ -97,7 +97,7 @@ registerBlockType( 'gato-graphql/schema-config-schema-categories', {
 	 * @return {WPElement} Element to render.
 	 */
 	edit(props) {
-		const possibleCategoryTaxonomies = window.gatoGraphqlSchemaConfigSchemaCategories.possibleCategoryTaxonomies;
+		const possibleCategoryTaxonomies = window.gatographqlSchemaConfigSchemaCategories.possibleCategoryTaxonomies;
 		return <EditBlock
 			possibleCategoryTaxonomies={ possibleCategoryTaxonomies }
 			{ ...props }

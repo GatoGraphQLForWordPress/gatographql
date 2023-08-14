@@ -11,7 +11,7 @@ Because blocks are used within the context of the WordPress editor, the user is 
 This internal `blockEditor` endpoint is accessible under:
 
 ```
-https://mysite.com/wp-admin/edit.php?page=gato_graphql&action=execute_query&endpoint_group=blockEditor
+https://mysite.com/wp-admin/edit.php?page=gatographql&action=execute_query&endpoint_group=blockEditor
 ```
 
 This endpoint has a pre-defined configuration (i.e. it does not have the user preferences from the plugin applied to it), so its behavior is consistent.
@@ -158,6 +158,6 @@ async function main() {
 
 The Gato GraphQL plugin itself powers its blocks via GraphQL, using the `graphql-request` library.
 
-Check out the source code for the ["Schema Configuration" block](https://github.com/leoloso/PoP/tree/24e27ad8b8011438a639fe6a27a22833c2d08287/layers/GatoGraphQLForWP/plugins/gato-graphql/blocks/schema-configuration/) and its [data store](https://github.com/leoloso/PoP/tree/24e27ad8b8011438a639fe6a27a22833c2d08287/layers/GatoGraphQLForWP/plugins/gato-graphql/blocks/schema-configuration/src/store).
+Check out the source code for the ["Schema Configuration" block](https://github.com/leoloso/PoP/tree/24e27ad8b8011438a639fe6a27a22833c2d08287/layers/GatoGraphQLForWP/plugins/gatographql/blocks/schema-configuration/) and its [data store](https://github.com/leoloso/PoP/tree/24e27ad8b8011438a639fe6a27a22833c2d08287/layers/GatoGraphQLForWP/plugins/gatographql/blocks/schema-configuration/src/store).
 
 </div>
