@@ -43,7 +43,7 @@ Send your message to the Gato GraphQL Support team:
     id="field-name"
     required=""
     aria-required="true"
-    placeholder="Pedro Rivas"
+    placeholder="John Doe"
     autocomplete="name"
     autocorrect="off"
     autocapitalize="none"
@@ -59,8 +59,23 @@ Send your message to the Gato GraphQL Support team:
     id="field-email"
     required=""
     aria-required="true"
-    placeholder="pedro@yahoo.com"
+    placeholder="john@doe.com"
     autocomplete="email"
+  />
+
+  <br/><br/>
+
+  <input
+    type="text"
+    name="subject"
+    id="field-subject"
+    required=""
+    aria-required="true"
+    placeholder="Subject..."
+    autocorrect="off"
+    autocapitalize="none"
+    spellcheck="true"
+    data-remove-prefix="true"
   />
 
   <br/><br/>
@@ -72,7 +87,7 @@ Send your message to the Gato GraphQL Support team:
     name="message"
     rows="10"
     cols="100"
-    placeholder="What do you need support with?"
+    placeholder="Your message..."
     required=""
     aria-required="true"
     spellcheck="true"
@@ -113,7 +128,7 @@ Subscribe to our newsletter and receive timely updates concerning:
 
 <form action="https://graphql-api.us7.list-manage.com/subscribe/post?u=0dc2e614635ab3af220b3a78c&amp;id=bdfd6885fe" method="POST" name="mc-embedded-subscribe-form" target="_blank">
   <label for="field-EMAIL">Email:</label>
-  <input type="email" name="EMAIL" id="field-EMAIL" required="" aria-required="true" placeholder="pedro@yahoo.com" autocomplete="email">
+  <input type="email" name="EMAIL" id="field-EMAIL" required="" aria-required="true" placeholder="john@doe.com" autocomplete="email">
   <button type="submit" class="button">Subscribe</button>
 </form>
 
