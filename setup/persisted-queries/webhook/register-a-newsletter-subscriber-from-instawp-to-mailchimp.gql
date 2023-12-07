@@ -6,11 +6,17 @@
 #
 # *********************************************************************
 # 
-# Required PHP code:#
-#   - Define in `wp-config.php`:#
+# Required PHP code:
+#   - Define in `wp-config.php`:
 #     define( 'MAILCHIMP_API_CREDENTIALS_USERNAME', '{ username }' );
 #     define( 'MAILCHIMP_API_CREDENTIALS_PASSWORD', '{ password }' );
 # 
+# *********************************************************************
+# 
+# URL params:
+#   - mailchimpDataCenterCode: Code for the data center of your account on Mailchimp (See: https://mailchimp.com/developer/marketing/docs/fundamentals/#api-structure)
+#   - mailchimpListCode: Code of the list on Mailchimp to which to subscribe the email
+#
 # *********************************************************************
 #
 # More info:
@@ -26,7 +32,10 @@ query HasSubscribedToNewsletter {
     @export(as: "subscribedToNewsletter")
 }
 
-query MaybeCreateContactOnMailchimp
+query MaybeRegisterEmailOnMailchimpList(
+  $mailchimpDataCenterCode: String!
+  $mailchimpListCode: String!
+)
    @depends(on: "HasSubscribedToNewsletter")
    @include(if: $subscribedToNewsletter)
 {
@@ -37,8 +46,13 @@ query MaybeCreateContactOnMailchimp
   mailchimpPassword: _env(name: "MAILCHIMP_API_CREDENTIALS_PASSWORD")
     @remove
   
+  mailchimpAPIEndpoint: _sprintf(
+    string: "https://%s.api.mailchimp.com/3.0/lists/%s/members",
+    values: [$mailchimpDataCenterCode, $mailchimpListCode]
+  )
+  
   mailchimpListMembersJSONObject: _sendJSONObjectItemHTTPRequest(input: {
-    url: "https://us7.api.mailchimp.com/3.0/lists/{listCode}/members",
+    url: $__mailchimpAPIEndpoint,
     method: POST,
     options: {
       auth: {
