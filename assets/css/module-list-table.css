@@ -160,6 +160,19 @@
     border-color: #00d2a5;
 }
 
+.plugins .active.module-server td,
+.plugins .active.module-server th,
+.subsubsub a.module-type-server {
+    background-color: #fefef7;
+}
+.plugin-update-tr.active.module-server td,
+.plugins .active.module-server th.check-column {
+    border-left-color: #c8d200;
+}
+.subsubsub a.module-type-server {
+    border-color: #cbd200;
+}
+
 .plugins .active.module-performance td,
 .plugins .active.module-performance th,
 .subsubsub a.module-type-performance {
@@ -171,6 +184,19 @@
 }
 .subsubsub a.module-type-performance {
     border-color: #9700d2;
+}
+
+.plugins .active.module-automation td,
+.plugins .active.module-automation th,
+.subsubsub a.module-type-automation {
+    background-color: #f9fef7;
+}
+.plugin-update-tr.active.module-automation td,
+.plugins .active.module-automation th.check-column {
+    border-left-color: #00d25f;
+}
+.subsubsub a.module-type-automation {
+    border-color: #00d235;
 }
 
 .plugins .active.module-endpoint td,
