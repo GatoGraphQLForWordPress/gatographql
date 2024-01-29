@@ -4,9 +4,9 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 1.7.0 - DATE
+## 2.1.0 - DATE
 
-## 1.6.0 - 29/01/2014
+## 2.0.0 - 29/01/2014
 
 ### Added
 
@@ -28,6 +28,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Fixed
 
 - Bug where a syntax error on a variable definition in the GraphQL query was not validated
+
+### Breaking changes
+
+- Field resolver's `validateFieldArgValue` method receives extra argument `$fieldArgs`
 
 ## 1.5.4 - 11/01/2024
 
