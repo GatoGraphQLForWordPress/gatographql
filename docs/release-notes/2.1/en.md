@@ -2,11 +2,13 @@
 
 ## Added
 
-### Support passing the Schema Configuration to apply when invoking the Internal GraphQL Server
+### Support providing the Schema Configuration to apply when invoking the Internal GraphQL Server
 
-Gato GraphQL now supports indicating what Schema Configuration to apply when executing a query via an internal GraphQL Server (i.e. directly within the PHP application, not via an endpoint).
+Gato GraphQL now supports providing the Schema Configuration to apply when executing a query via an internal GraphQL Server (i.e. directly within the PHP application, not via an endpoint).
 
-The [Internal GraphQL Server extension](https://gatographql.com/extensions/internal-graphql-server/) makes use of this feature. It now accepts a `$schemaConfigurationIDOrSlug` parameter on `GraphQLServer::executeQuery` and `GraphQLServer::executeQueryInFile`, and already provides the persisted query's schema configuration on `GraphQLServer::executePersistedQuery`:
+_This new feature enhances several PRO extensions._
+
+The [Internal GraphQL Server](https://gatographql.com/extensions/internal-graphql-server/) extension makes use of this feature. It now accepts a `$schemaConfigurationIDOrSlug` parameter on methods `executeQuery` and `executeQueryInFile` from the `GraphQLServer` class, and already extracts the schema configuration used by the persisted query on `executePersistedQuery`:
 
 ```diff
 class GraphQLServer {
@@ -40,6 +42,24 @@ class GraphQLServer {
     // ...
   }
 ```
+
+The [Automation](https://gatographql.com/extensions/automation/) extension also benefits from this new feature.
+
+It now provides a user interface for its "automator" functionality (directly via the WordPress editor), called [Automation Configurator](https://gatographql.com/extensions/automation/#heading-automation-configurator). The automation trigger is any WordPress action hook, and the action is the execution of a GraphQL persisted query.
+
+<div class="img-width-1024" markdown=1>
+
+![Automation Rule editor](../../../extensions/automation/docs/images/automation-rule-editor.png "Automation Rule editor")
+
+</div>
+
+For instance, when creating a new post, automation rule **Add comments block to new post** checks if the `core/comments` block is present and, if not, it adds it at the bottom of the post:
+
+<div class="img-width-640" markdown=1>
+
+![Automatically inserting the comments block to new 'draft' posts](../../../extensions/automation/docs/images/automation-rule-insert-mandatory-comments-block.gif "Automatically inserting the comments block to new 'draft' posts")
+
+</div>
 
 ### Predefined persisted query "Insert block in post"
 
