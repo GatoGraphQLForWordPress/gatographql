@@ -187,19 +187,6 @@ query InitializeEmptyVariables($postIDs: ID!) {
       )
 
       @export(
-        as: "coreQuoteValueItems"
-        type: DICTIONARY
-      )
-      @export(
-        as: "coreQuoteValueReplacementsFrom"
-        type: DICTIONARY
-      )
-      @export(
-        as: "coreQuoteValueReplacementsTo"
-        type: DICTIONARY
-      )
-
-      @export(
         as: "corePullquoteCitationItems"
         type: DICTIONARY
       )
@@ -456,26 +443,13 @@ query FetchData($postIDs: ID!)
     )
       @underEachArrayItem
         @underJSONObjectProperty(
-          by: { key: "attributes" }
-          affectDirectivesUnderPos: [1, 3]
+          by: { path: "attributes.citation" }
+          failIfNonExistingKeyOrPath: false
         )
-          @underJSONObjectProperty(
-            by: { key: "citation" }
-            failIfNonExistingKeyOrPath: false
+          @export(
+            as: "coreQuoteCitationItems"
+            type: DICTIONARY
           )
-            @export(
-              as: "coreQuoteCitationItems"
-              type: DICTIONARY
-            )
-    
-          @underJSONObjectProperty(
-            by: { key: "value" }
-            failIfNonExistingKeyOrPath: false
-          )
-            @export(
-              as: "coreQuoteValueItems"
-              type: DICTIONARY
-            )
     
 
     corePullquote: blockFlattenedDataItems(
@@ -646,10 +620,6 @@ query TransformData(
     coreQuoteCitation: {
       from: $coreQuoteCitationItems,
       to: $coreQuoteCitationItems,
-    },
-    coreQuoteValue: {
-      from: $coreQuoteValueItems,
-      to: $coreQuoteValueItems,
     },
     corePullquoteCitation: {
       from: $corePullquoteCitationItems,
@@ -1132,7 +1102,7 @@ query CreateRegexReplacements
             @applyField(
               name: "_sprintf",
               arguments: {
-                string: "#(<!-- wp:quote .*?-->\\n?<blockquote ?.*?>.*<cite ?.*?>)%s(</cite></blockquote>\\n?<!-- /wp:quote -->)#",
+                string: "#(<!-- wp:quote .*?-->\\n?<blockquote ?.*?>.*<cite ?.*?>)%s(</cite></blockquote>\\n?<!-- /wp:quote -->)#s",
                 values: [$value]
               },
               setResultInResponse: true
@@ -1145,37 +1115,6 @@ query CreateRegexReplacements
       )
         @export(
           as: "coreQuoteCitationReplacementsTo",
-        )
-
-
-    @underJSONObjectProperty(
-      by: { key: "coreQuoteValue" }
-      affectDirectivesUnderPos: [1, 6]
-    )
-      @underJSONObjectProperty(
-        by: { key: "from" }
-        affectDirectivesUnderPos: [1, 4],
-      )
-        @underEachJSONObjectProperty
-          @underEachArrayItem(
-            passValueOnwardsAs: "value"
-          )
-            @applyField(
-              name: "_sprintf",
-              arguments: {
-                string: "#(<!-- wp:quote .*?-->\\n?<blockquote ?.*?>)%s((?:<cite ?.*?>.*</cite>)?</blockquote>\\n?<!-- /wp:quote -->)#s",
-                values: [$value]
-              },
-              setResultInResponse: true
-            )
-        @export(
-          as: "coreQuoteValueReplacementsFrom",
-        )
-      @underJSONObjectProperty(
-        by: { key: "to" }
-      )
-        @export(
-          as: "coreQuoteValueReplacementsTo",
         )
 
 
@@ -1225,7 +1164,7 @@ query CreateRegexReplacements
             @applyField(
               name: "_sprintf",
               arguments: {
-                string: "#(<!-- wp:pullquote .*?-->\\n?<figure ?.*?><blockquote ?.*?><p ?.*?>)%s(</p>(?:<cite ?.*?>.*</cite>)?</blockquote></figure>\\n?<!-- /wp:pullquote -->)#s",
+                string: "#(<!-- wp:pullquote .*?-->\\n?<figure ?.*?><blockquote ?.*?><p ?.*?>)%s(</p><cite ?.*?>.*</cite></blockquote></figure>\\n?<!-- /wp:pullquote -->)#",
                 values: [$value]
               },
               setResultInResponse: true
@@ -1390,7 +1329,6 @@ query ExecuteRegexReplacements
         76, 77,
         81, 82,
         86, 87,
-        91, 92,
       ]
     )
       @applyField(
@@ -1858,45 +1796,6 @@ query ExecuteRegexReplacements
           limit: 1,
           searchRegex: $postCoreQuoteCitationReplacementsFrom,
           replaceWith: $postCoreQuoteCitationReplacementsTo
-        )
-    
-    
-      @applyField(
-        name: "_propertyExistsInJSONObject"
-        arguments: {
-          object: $coreQuoteValueReplacementsFrom
-          by: { key: $postID }
-        }
-        passOnwardsAs: "hasPostID"
-      )
-      @if(
-        condition: $hasPostID
-        affectDirectivesUnderPos: [1, 2, 3]
-      )
-        @applyField(
-          name: "_objectProperty",
-          arguments: {
-            object: $coreQuoteValueReplacementsFrom,
-            by: {
-              key: $postID
-            }
-          },
-          passOnwardsAs: "postCoreQuoteValueReplacementsFrom"
-        )
-        @applyField(
-          name: "_objectProperty",
-          arguments: {
-            object: $coreQuoteValueReplacementsTo,
-            by: {
-              key: $postID
-            }
-          },
-          passOnwardsAs: "postCoreQuoteValueReplacementsTo"
-        )
-        @strRegexReplaceMultiple(
-          limit: 1,
-          searchRegex: $postCoreQuoteValueReplacementsFrom,
-          replaceWith: $postCoreQuoteValueReplacementsTo
         )
     
     
@@ -3714,7 +3613,7 @@ Passing these `variables`:
       "corePullquoteValue": {
         "from": {
           "40": [
-            "#(<!-- wp:pullquote .*?-->\\n?<figure ?.*?><blockquote ?.*?><p ?.*?>)You only know me as you see me, not as I actually am\\.(</p>(?:<cite ?.*?>.*</cite>)?</blockquote></figure>\\n?<!-- /wp:pullquote -->)#"
+            "#(<!-- wp:pullquote .*?-->\\n?<figure ?.*?><blockquote ?.*?><p ?.*?>)You only know me as you see me, not as I actually am\\.(</p><cite ?.*?>.*</cite></blockquote></figure>\\n?<!-- /wp:pullquote -->)#"
           ]
         },
         "to": {
