@@ -22,7 +22,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Hide "Excerpt as description" module if there are no CPTs enabled (#2851)
 - Display the "Enable Logs?" settings only when some extension is using it (#2853)
 - Hide the Schema tutorial page by default (#2854)
-- Reorganized the Settings, splitting "Schema Configuration" into 2 elements:  "Schema Configuration" and  "Schema Elements Configuration" (#2861)
+- Reorganized the Settings, splitting "Schema Configuration" into 2 elements: "Schema Configuration" and  "Schema Elements Configuration" (#2861)
+- Improved documentation for extensions (#2866)
 
 ## 5.0.0 - 07/09/2024
 
@@ -362,17 +363,17 @@ Whenever creating a new release of the Gato GraphQL plugin, automatically deploy
 - Added "Request headers" to GraphiQL clients on single public/private endpoint, and custom endpoints
 - Renamed page "Recipes" to "Tutorial", and added settings to hide it
 - Renamed existing bundles:
-  - “Application Glue & Automator” Bundle => “Tailored WordPress Automator” Bundle
-  - “Content Translation” Bundle => “Simplest WordPress Content Translation” Bundle
-  - “Public API” Bundle => “Responsible WordPress Public API” Bundle
+  - “Application Glue & Automator” Bundle => “Query Functions” Bundle
+  - “Content Translation” Bundle => “Polylang Integration” Bundle
+  - “Public API” Bundle => “Multiple Query Execution” Bundle
 - Added documentation for new bundles:
   - “Automated Content Translation & Sync for WordPress Multisite” Bundle
-  - “Better WordPress Webhooks” Bundle
-  - “Easy WordPress Bulk Transform & Update” Bundle
-  - “Private GraphQL Server for WordPress” Bundle
-  - “Selective Content Import, Export & Sync for WordPress” Bundle
-  - “Unhindered WordPress Email Notifications” Bundle
-  - “Versatile WordPress Request API” Bundle
+  - “Caching” Bundle
+  - “Custom Endpoints” Bundle
+  - “Deprecation” Bundle
+  - “Persisted Queries” Bundle
+  - “Security” Bundle
+  - “Schema Extensions” Bundle
 
 ### Fixed
 

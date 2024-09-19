@@ -298,7 +298,8 @@ The Gato GraphQL website contains extensive documentation, including [guides](ht
 * Hide "Excerpt as description" module if there are no CPTs enabled (#2851)
 * Display the "Enable Logs?" settings only when some extension is using it (#2853)
 * Hide the Schema tutorial page by default (#2854)
-* Reorganized the Settings, splitting "Schema Configuration" into 2 elements:  "Schema Configuration" and  "Schema Elements Configuration" (#2861)
+* Reorganized the Settings, splitting "Schema Configuration" into 2 elements: "Schema Configuration" and  "Schema Elements Configuration" (#2861)
+* Improved documentation for extensions (#2866)
 * [PRO] If `from` email not provided in `_sendEmail` mutation, use the blog's admin email
 
 = 5.0.0 =
@@ -515,8 +516,8 @@ The Gato GraphQL website contains extensive documentation, including [guides](ht
 * Added predefined custom endpoint "Nested mutations + Entity as mutation payload type"
 * Added "Request headers" to GraphiQL clients on single public/private endpoint, and custom endpoints
 * Renamed page "Recipes" to "Tutorial", and added settings to hide it
-* Renamed existing bundles (“Application Glue & Automator” Bundle => “Tailored WordPress Automator” Bundle, “Content Translation” Bundle => “Simplest WordPress Content Translation” Bundle and “Public API” Bundle => “Responsible WordPress Public API” Bundle)
-* Added documentation for new bundles (“Automated Content Translation & Sync for WordPress Multisite” Bundle, “Better WordPress Webhooks” Bundle, “Easy WordPress Bulk Transform & Update” Bundle, “Private GraphQL Server for WordPress” Bundle, “Selective Content Import, Export & Sync for WordPress” Bundle, “Unhindered WordPress Email Notifications” Bundle and “Versatile WordPress Request API” Bundle)
+* Renamed existing bundles (“Application Glue & Automator” Bundle => “Query Functions” Bundle, “Content Translation” Bundle => “Polylang Integration” Bundle and “Public API” Bundle => “Multiple Query Execution” Bundle)
+* Added documentation for new bundles (“Automated Content Translation & Sync for WordPress Multisite” Bundle, “Caching” Bundle, “Custom Endpoints” Bundle, “Deprecation” Bundle, “Persisted Queries” Bundle, “Security” Bundle and “Schema Extensions” Bundle)
 * Fixed HTML codes were printed in select inputs in the WordPress editor, now removed
 
 = 1.3.0 =
