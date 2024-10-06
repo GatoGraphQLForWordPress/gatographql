@@ -14,9 +14,9 @@ Powerful and flexible GraphQL server for WordPress.
 
 Gato GraphQL is a powerful and flexible GraphQL server for WordPress.
 
-It allows you to retrieve, manipulate and store again any piece of data, in any desired way, using the [GraphQL](https://graphql.org/) language.
+Use it to expose WordPress data via GraphQL. Access any piece of data (posts, users, comments, tags, categories, etc) from your application, and also transform and mutate data.
 
-Use Gato GraphQL to:
+The [standard use cases](https://gatographql.com) are:
 
 **Code performant apps:** Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less.
 
@@ -26,81 +26,31 @@ Use Gato GraphQL to:
 
 == Extensions ==
 
-[Extensions](https://gatographql.com/extensions) allow you to augment the server functionality, and extend the GraphQL schema, to satisfy your requirements.
+[Extensions](https://gatographql.com/extensions) allow you to augment the server functionality, and extend the GraphQL schema.
 
-You can purchase each extension separately, or get the [bundle containing all the extensions](https://gatographql.com/pricing).
+You can purchase each extension separately, or get a [bundle containing all the extensions](https://gatographql.com/pricing).
 
-- [Access Control](https://gatographql.com/extensions/access-control)
-- [Caching](https://gatographql.com/extensions/caching)
-- [Custom Endpoints](https://gatographql.com/extensions/custom-endpoints)
-- [Deprecation](https://gatographql.com/extensions/deprecation)
-- [Multiple Query Execution](https://gatographql.com/extensions/multiple-query-execution)
-- [Persisted Queries](https://gatographql.com/extensions/persisted-queries)
-- [Polylang Integration](https://gatographql.com/extensions/polylang-integration)
-- [Query Functions](https://gatographql.com/extensions/query-functions)
-- [Schema Functions](https://gatographql.com/extensions/schema-functions)
+The available extensions are:
 
-=== Access Control ===
+[Access Control](https://gatographql.com/extensions/access-control): Grant granular access to the schema (based on the user being logged-in, having some role or capability, or by IP), to manage who can access what data.
 
-Grant granular access to the schema (based on the user being logged-in, having some role or capability, or by IP), to manage who can access what data.
+[Caching](https://gatographql.com/extensions/caching): Make your application faster by providing HTTP Caching for the GraphQL response, and by caching the results of expensive operations.
 
-[youtube https://www.youtube.com/watch?v=uabFL_CoEWo]
+[Custom Endpoints](https://gatographql.com/extensions/custom-endpoints): Create and expose multiple custom GraphQL schemas under their own URL, for different users, applications, external services, or other.
 
-=== Caching ===
+[Deprecation](https://gatographql.com/extensions/deprecation): Evolve the GraphQL schema by deprecating fields, and explaining how to replace them, through a user interface.
 
-Make your application faster by providing HTTP Caching for the GraphQL response, and by caching the results of expensive operations.
+[Internal GraphQL Server](https://gatographql.com/extensions/internal-graphql-server): Execute GraphQL queries directly within your application, using PHP code.
 
-[youtube https://www.youtube.com/watch?v=uabFL_CoEWo]
+[Multiple Query Execution](https://gatographql.com/extensions/multiple-query-execution): Combine multiple queries into a single query, sharing state across them and executing them in the requested order.
 
-=== Custom Endpoints ===
+[Persisted Queries](https://gatographql.com/extensions/persisted-queries): Use GraphQL queries to create pre-defined endpoints as in REST, obtaining the benefits from both APIs.
 
-Create and expose multiple custom GraphQL schemas under their own URL, for different users, applications, external services, or other.
+[Polylang Integration](https://gatographql.com/extensions/polylang-integration): Integration with the Polylang plugin, adding fields and filters to select the language when fetching data on a multilingual site.
 
-[youtube https://www.youtube.com/watch?v=uabFL_CoEWo]
+[Query Functions](https://gatographql.com/extensions/query-functions): Manipulate the values of fields within the GraphQL query, via a collection of utilities and special directives providing meta-programming capabilities.
 
-=== Deprecation ===
-
-Evolve the GraphQL schema by deprecating fields, and explaining how to replace them, through a user interface.
-
-[youtube https://www.youtube.com/watch?v=uabFL_CoEWo]
-
-=== Multiple Query Execution ===
-
-Combine multiple queries into a single query, sharing state across them and executing them in the requested order.
-
-[youtube https://www.youtube.com/watch?v=uabFL_CoEWo]
-
-=== Persisted Queries ===
-
-Use GraphQL queries to create pre-defined endpoints as in REST, obtaining the benefits from both APIs.
-
-[youtube https://www.youtube.com/watch?v=uabFL_CoEWo]
-
-=== Polylang Integration ===
-
-Integration with the Polylang plugin, adding fields and filters to select the language when fetching data on a multilingual site.
-
-[youtube https://www.youtube.com/watch?v=uabFL_CoEWo]
-
-=== Query Functions ===
-
-Manipulate the values of fields within the GraphQL query, via a collection of utilities and special directives providing meta-programming capabilities.
-
-[youtube https://www.youtube.com/watch?v=uabFL_CoEWo]
-
-=== Schema Functions ===
-
-The GraphQL schema is provided with fields and directives which expose functionalities from the PHP programming language.
-
-[youtube https://www.youtube.com/watch?v=uabFL_CoEWo]
-
-== Source code ==
-
-Gato GraphQL is open source, under the GPLv2 license.
-
-The source code for the plugin is in GitHub repo [GatoGraphQL/GatoGraphQL](https://github.com/GatoGraphQL/GatoGraphQL).
-
-The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plugins/gatographql/blocks](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/blocks).
+[Schema Functions](https://gatographql.com/extensions/schema-functions): The GraphQL schema is provided with fields and directives which expose functionalities from the PHP programming language.
 
 == Frequently Asked Questions ==
 
@@ -169,6 +119,12 @@ Yes it does. If you have purchased any Gato GraphQL product and found out that i
 = Can I try out Gato GraphQL + all extensions? =
 
 Yes, you can [launch your own sandbox site](https://app.instawp.io/launch?t=gatographql-demo&d=v2) to play with Gato GraphQL + all extensions, for free, for 7 days.
+
+= Is the plugin open source? =
+
+Yes it is. The source code for the plugin is in GitHub repo [GatoGraphQL/GatoGraphQL](https://github.com/GatoGraphQL/GatoGraphQL).
+
+The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plugins/gatographql/blocks](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/blocks).
 
 == Screenshots ==
 
