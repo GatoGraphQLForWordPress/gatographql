@@ -130,11 +130,9 @@ class SchemaConfigurationFunctionalityModuleResolver extends AbstractFunctionali
     public function isPredefinedEnabledOrDisabled(string $module): ?bool
     {
         return match ($module) {
-            self::GLOBAL_FIELDS,
-            self::GLOBAL_ID_FIELD
-                => true,
-            default
-                => parent::isPredefinedEnabledOrDisabled($module),
+            self::GLOBAL_FIELDS => true,
+            // self::GLOBAL_ID_FIELD => true,
+            default => parent::isPredefinedEnabledOrDisabled($module),
         };
     }
 
