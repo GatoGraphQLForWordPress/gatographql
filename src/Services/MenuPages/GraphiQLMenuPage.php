@@ -150,8 +150,7 @@ class GraphiQLMenuPage extends AbstractPluginMenuPage
 
     protected function getResponse(): string
     {
-        return '';
-        // return \__('Click the "Execute Query" button, or press Ctrl+Enter (Command+Enter in Mac)', 'gatographql');
+        return \__('Click the "Execute Query" button, or press Ctrl+Enter (Command+Enter in Mac)', 'gatographql');
     }
 
     protected function getDefaultQuery(): string
@@ -181,25 +180,6 @@ class GraphiQLMenuPage extends AbstractPluginMenuPage
             #
             #   Ctrl-Enter (or press the play button above)
             #
-            query {
-              posts(pagination: { limit: 3 }) {
-                id
-                title
-                date
-                url
-                author {
-                  id
-                  name
-                  url
-                }
-                tags {
-                  name
-                }
-                featuredImage {
-                  src
-                }
-              }
-            }
             GRAPHQL;
     }
 }
