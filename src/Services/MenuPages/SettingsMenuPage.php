@@ -856,6 +856,7 @@ class SettingsMenuPage extends AbstractPluginMenuPage
                     name="<?php echo \esc_attr($optionsFormName . '[' . $name . ']'); ?>"
                     id="<?php echo \esc_attr($name); ?>"
                     value="<?php echo \esc_attr($value); ?>"
+                    class="regular-text"
                     <?php if ($isNumber) { ?>
                         type="number"
                         step="1"
@@ -904,7 +905,13 @@ class SettingsMenuPage extends AbstractPluginMenuPage
             <label for="<?php echo \esc_attr($id) ?>">
                 <strong><?php echo \esc_html($label); ?></strong>
                 <br/>
-                <input name="<?php echo \esc_attr($optionsFormName . '[' . $name . '][' . $key . ']'); ?>" id="<?php echo \esc_attr($id) ?>" value="<?php echo \esc_html($value[$key] ?? '') ?>" type="text">
+                <input
+                    name="<?php echo \esc_attr($optionsFormName . '[' . $name . '][' . $key . ']'); ?>"
+                    id="<?php echo \esc_attr($id) ?>"
+                    class="regular-text"
+                    value="<?php echo \esc_html($value[$key] ?? '') ?>"
+                    type="text"
+                >
             </label>
             <?php
             $addSpacing = true;
@@ -934,6 +941,7 @@ class SettingsMenuPage extends AbstractPluginMenuPage
                 <select
                     name="<?php echo \esc_attr($optionsFormName . '[' . $name . ']' . ($isMultiple ? '[]' : '')); ?>"
                     id="<?php echo \esc_attr($name); ?>"
+                    class="regular-text"
                     <?php if ($isMultiple) : ?>
                         multiple="multiple"
                         size="10"
@@ -969,7 +977,12 @@ class SettingsMenuPage extends AbstractPluginMenuPage
         $label_safe = isset($itemSetting[Properties::DESCRIPTION]) ? '<br/>' . $itemSetting[Properties::DESCRIPTION] : '';
         ?>
             <label for="<?php echo \esc_attr($name); ?>">
-                <textarea name="<?php echo \esc_attr($optionsFormName . '[' . $name . ']'); ?>" id="<?php echo \esc_attr($name); ?>" rows="10" cols="50"><?php echo \esc_html(implode("\n", $value)) ?></textarea>
+                <textarea
+                    name="<?php echo \esc_attr($optionsFormName . '[' . $name . ']'); ?>"
+                    id="<?php echo \esc_attr($name); ?>"
+                    rows="10"
+                    cols="50"
+                ><?php echo \esc_html(implode("\n", $value)) ?></textarea>
                 <?php echo $label_safe; ?>
             </label>
         <?php
