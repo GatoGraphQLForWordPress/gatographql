@@ -24,9 +24,7 @@ The [standard use cases](https://gatographql.com) are:
 
 **Speed up creating Gutenberg blocks:** Ship Gutenberg blocks faster, by avoiding creating REST controllers to feed them data.
 
-With Gato GraphQL, you also have the flexibility to migrate your application from WordPress to another framework or CMS (if ever needed) with minimal effort: The GraphQL server can run via its standalone PHP component (which doesn't depend on WordPress), and only those resolvers fetching WordPress data (posts, users, comments, etc) used by your application would need to be coded again.
-
-We call this, <strong>Headless WordPress without WordPress</strong>.
+With Gato GraphQL, you also have the flexibility to migrate your application from WordPress to another PHP-based framework or CMS (if ever needed) with minimal effort: The GraphQL server can run via its standalone PHP component (which doesn't depend on WordPress), and only those resolvers fetching WordPress data (posts, users, comments, etc) used by your application would need to be ported. You can do **Headless WordPress without WordPress**, avoiding the vendor lock-in to WordPress.
 
 == Extensions ==
 
@@ -96,6 +94,12 @@ Among others, you can use any of these libraries/frameworks:
 - Svelte
 - Eleventy
 
+= Can I run Gato GraphQL without WordPress? =
+
+Yes you can. Gato GraphQL can be included within any PHP-based application (not only WordPress), based on Laravel, Symfony, or any other.
+
+Check guide [Running Gato GraphQL without WordPress](https://gatographql.com/guides/interact/running-gatographql-without-wordpress) for the explanation on how to do it.
+
 = Can I fetch Gutenberg block data with Gato GraphQL? =
 
 Yes you can. Check guide [Working with (Gutenberg) blocks](https://gatographql.com/guides/interact/working-with-gutenberg-blocks) for the different ways in which we can query block data, and guide [Mapping JS components to (Gutenberg) blocks](https://gatographql.com/guides/code/mapping-js-components-to-gutenberg-blocks) for an example.
@@ -110,9 +114,17 @@ In addition, Gato GraphQL provides fields on the GraphQL schema to retrieve mult
 
 Check out the [Gato GraphQL vs WP REST API comparison](https://gatographql.com/comparisons/gatographql-vs-wp-rest-api).
 
+= How to replace the WP REST API with Gato GraphQL? =
+
+Check out the [Replacing the WP REST API guide](https://gatographql.com/guides/intro/replacing-the-wp-rest-api-with-gatographql).
+
 = How does Gato GraphQL compare against WPGraphQL? =
 
 Check out the [Gato GraphQL vs WPGraphQL comparison](https://gatographql.com/comparisons/gatographql-vs-wpgraphql).
+
+= How to replace WPGraphQL with Gato GraphQL? =
+
+Check out the [Replacing WPGraphQL guide](https://gatographql.com/guides/intro/replacing-wpgraphql-with-gatographql).
 
 = What are extensions needed for? =
 
