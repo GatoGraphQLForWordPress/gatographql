@@ -235,6 +235,10 @@ Return an array containing all the elements from the first array which are not p
 
 Create an array filled with values.
 
+### `_arrayFilter`
+
+Filter out the null or empty elements in the array.
+
 ### `_arrayFlipToObject`
 
 Exchanges all numeric keys with their associated values in an array, returning an object.
@@ -408,6 +412,10 @@ Indicate if the value is not `null`.
 ### `_objectAddEntry`
 
 Adds an entry to the object.
+
+### `_objectFilter`
+
+Filter out the null or empty elements in the object.
 
 ### `_objectIntersectKey`
 
@@ -640,6 +648,10 @@ Subtract an integer number from the field value.
 ### `@objectAddEntry`
 
 Add an entry to the JSON object.
+
+### `@objectFilter`
+
+Filter out the null or empty elements in an object.
 
 ### `@objectKeepProperties`
 
