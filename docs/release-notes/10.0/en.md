@@ -15,6 +15,10 @@
 
 - Settings: For entries of the "Key => Label" type (eg: Extension license keys), allow to use a select input to print preselected values ([#2988](https://github.com/GatoGraphQL/GatoGraphQL/pull/2988))
 
+## Fixed
+
+- Container not generated properly in certain hosts (`@required` attribute disregarded) ([#3009](https://github.com/GatoGraphQL/GatoGraphQL/pull/3009))
+
 ## [Extensions] Added
 
 - [DeepL] DeepL plugin

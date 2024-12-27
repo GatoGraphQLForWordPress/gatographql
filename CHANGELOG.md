@@ -21,6 +21,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 - Settings: For entries of the "Key => Label" type (eg: Extension license keys), allow to use a select input to print preselected values (#2988)
 
+### Fixed
+
+- Container not generated properly in certain hosts (`@required` attribute disregarded) (#3009)
+
 ## 9.0.0 - 16/12/2024
 
 ### Breaking changes
