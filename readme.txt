@@ -32,7 +32,7 @@ The [Power Extensions](https://gatographql.com/extensions#power-extensions) allo
 
 [youtube https://www.youtube.com/watch?v=d-Ap9axT7kE]
 
-You can purchase a [bundle containing all the power extensions](https://gatographql.com/pricing#power-extensions) (at a big discount).
+You can purchase a [bundle containing all the power extensions](https://gatographql.com/pricing#power-extensions).
 
 The available power extensions are:
 
@@ -64,6 +64,16 @@ You can [purchase each premium extension separately](https://gatographql.com/pri
 
 The available premium extensions are:
 
+[Automation](https://gatographql.com/extensions/automation): Use GraphQL to automate tasks in your app: Execute queries when some event happens, chain queries, and schedule and trigger queries via WP-Cron.
+
+[DeepL](https://gatographql.com/extensions/deepl): Translate a field value to over 30 languages using the DeepL API.
+
+[Events Manager](https://gatographql.com/extensions/events-manager): Integration with the Events Manager plugin, to fetch event data.
+
+[Google Translate](https://gatographql.com/extensions/google-translate): Translate a field value to over 190 languages using the Google Translate API.
+
+[MultilingualPress](https://gatographql.com/extensions/multilingualpress): Integration with the MultilingualPress plugin, to fetch multilingual data.
+
 [Polylang](https://gatographql.com/extensions/polylang): Integration with the Polylang plugin, adding fields and filters to select the language when fetching data on a multilingual site.
 
 == Frequently Asked Questions ==
@@ -76,6 +86,13 @@ The Gato GraphQL website contains extensive documentation:
 - [Extensions reference](https://gatographql.com/extensions-reference) docs
 - [Queries library](https://gatographql.com/library) with examples of GraphQL queries for many use cases
 - [Schema tutorial](https://gatographql.com/tutorial) to learn all the elements of the GraphQL schema
+
+= Can I watch videos demonstrating the plugin? =
+
+Sure you can. There are videos demonstrating how to use Gato GraphQL in:
+
+- The [Demos](https://gatographql.com/demos) page on gatographql.com
+- The [@GatoGraphQL YouTube channel](https://www.youtube.com/@GatoGraphQL)
 
 = Can I extend the GraphQL schema with my custom types and fields? =
 
