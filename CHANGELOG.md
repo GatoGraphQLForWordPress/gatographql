@@ -4,6 +4,12 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 10.0.1 - DATE
+
+### Added
+
+- YouTube video for the Automation extension doc (#93311e2)
+
 ## 10.0.0 - 30/12/2024
 
 ### Breaking changes
