@@ -3,7 +3,7 @@ Contributors: gatographql, leoloso
 Tags: decoupled, GraphQL, headless, webhook, api, wp-cli, rest, rest-api, react, astro, wpgraphql, Next.js
 Requires at least: 6.1
 Tested up to: 6.7
-Stable tag: 11.1.2
+Stable tag: 11.2.0
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -65,8 +65,6 @@ You can [purchase each premium extension separately](https://gatographql.com/pri
 The available premium extensions are:
 
 [Automation](https://gatographql.com/extensions/automation): Use GraphQL to automate tasks in your app: Execute queries when some event happens, chain queries, and schedule and trigger queries via WP-Cron.
-
-[Elementor](https://gatographql.com/extensions/elementor): Integration with the Elementor plugin, to parse and update data in Elementor pages and templates.
 
 [Events Manager](https://gatographql.com/extensions/events-manager): Integration with the Events Manager plugin, to fetch event data.
 
@@ -211,10 +209,6 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 16. The Tutorial section explains how to achieve many objectives, exploring all the elements from the GraphQL schema
 
 == Changelog ==
-
-= 12.0.0 =
-* Added documentation for new Elementor Premium Extension (#3052)
-* Breaking changes: Plugin constructor signature receives nullable `commitHash` param (#3056)
 
 = 11.2.0 =
 * Support fetching Page Builders data in the GraphQL schema (#3051)
