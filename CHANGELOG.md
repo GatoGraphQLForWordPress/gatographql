@@ -4,13 +4,7 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 12.0.0 - DATE
-
-### Added
-
-- Documentation for new Elementor Premium Extension (#3052)
-
-## 11.2.0 - 15/03/2025
+## 11.2.0 - DATE
 
 ### Added
 
@@ -20,6 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Fixed
 
 - Malcare deactivate triggers Exception (#3054)
+- Install plugin setup data on first request after activating license (#3055)
 
 ## 11.1.2 - 07/03/2025
 

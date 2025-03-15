@@ -66,8 +66,6 @@ The available premium extensions are:
 
 [Automation](https://gatographql.com/extensions/automation): Use GraphQL to automate tasks in your app: Execute queries when some event happens, chain queries, and schedule and trigger queries via WP-Cron.
 
-[Elementor](https://gatographql.com/extensions/elementor): Integration with the Elementor plugin, to parse and update data in Elementor pages and templates.
-
 [Events Manager](https://gatographql.com/extensions/events-manager): Integration with the Events Manager plugin, to fetch event data.
 
 [MultilingualPress](https://gatographql.com/extensions/multilingualpress): Integration with the MultilingualPress plugin, to fetch multilingual data.
@@ -212,13 +210,11 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
-= 12.0.0 =
-* Added documentation for new Elementor Premium Extension (#3052)
-
 = 11.2.0 =
 * Support fetching Page Builders data in the GraphQL schema (#3051)
 * Added documentation for new field `_objectMerge`, from the **Schema Functions** extension (#3050)
 * Fixed: Malcare deactivate triggers Exception (#3054)
+* Fixed: Install plugin setup data on first request after activating license (#3055)
 
 = 11.1.2 =
 * Support `password` type in multi-inputs in Settings (#3047)
