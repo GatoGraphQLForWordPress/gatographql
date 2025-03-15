@@ -4,7 +4,13 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 11.2.0 - DATE
+## 12.0.0 - DATE
+
+### Added
+
+- Documentation for new Elementor Premium Extension (#3052)
+
+## 11.2.0 - 15/03/2025
 
 ### Added
 
