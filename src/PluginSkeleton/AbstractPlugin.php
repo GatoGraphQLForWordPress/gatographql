@@ -452,7 +452,7 @@ abstract class AbstractPlugin implements PluginInterface
      * Allow to install plugin setup data after a
      * commercial license has been activated
      */
-    public function isLicenseJustActivated(): void
+    public function anyCommercialLicenseJustActivated(): void
     {
         // Override
     }
