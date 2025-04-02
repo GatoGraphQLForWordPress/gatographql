@@ -66,8 +66,6 @@ The available premium extensions are:
 
 [Automation](https://gatographql.com/extensions/automation): Use GraphQL to automate tasks in your app: Execute queries when some event happens, chain queries, and schedule and trigger queries via WP-Cron.
 
-[Elementor](https://gatographql.com/extensions/elementor): Integration with the Elementor plugin, to parse and update data in Elementor pages and templates.
-
 [Events Manager](https://gatographql.com/extensions/events-manager): Integration with the Events Manager plugin, to fetch event data.
 
 [MultilingualPress](https://gatographql.com/extensions/multilingualpress): Integration with the MultilingualPress plugin, to fetch multilingual data.
@@ -212,16 +210,14 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
-= 12.0.0 =
-* Added documentation for new Elementor Premium Extension (#3052)
-* Breaking change: Plugin constructor signature receives nullable `commitHash` param (#3056)
-* Breaking change: Store the extension names whose license has just been activated (instead of a timestamp) to install setup data (#3057)
-
 = 11.3.0 =
 * Added fields `meta: ListValueJSONObject!` and `metaKeys: [String!]!` for types `Comment/CustomPost/TaxonomyTerm/User` (#3060)
-* Added custom post meta mutations (#3067)
-* Added category meta mutations (#3063)
-* Added tag meta mutations (#3064)
+* Added meta mutations
+  * Custom posts (#3067)
+  * Categories (#3063)
+  * Tags (#3064)
+  * Users (#3072)
+  * Comments (#3072)
 * Added type `ListValueJSONObject` (#3060)
 * Made meta field `metaValue` handle any scalar type (previously only `String`) (#3061)
 * Made meta field `metaValues` handle any scalar type (previously only built-in ones), such as `JSONObject` (#3061)

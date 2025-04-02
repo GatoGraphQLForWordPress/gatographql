@@ -428,9 +428,8 @@ abstract class AbstractMainPlugin extends AbstractPlugin implements MainPluginIn
                  * @see layers/GatoGraphQLForWP/plugins/gatographql/src/Marketplace/LicenseValidationService.php `activateDeactivateValidateGatoGraphQLCommercialExtensions`
                  */
                 $userSettingsManager = UserSettingsManagerFacade::getInstance();
-                $justActivatedLicenseExtensionNames = $userSettingsManager->getJustActivatedLicenseTransientExtensionNames();
-                if ($justActivatedLicenseExtensionNames !== null && $justActivatedLicenseExtensionNames !== []) {
-                    $userSettingsManager->removeJustActivatedLicenseTransient();
+                if ($userSettingsManager->getLicenseActivationTimestamp() !== null) {
+                    $userSettingsManager->removeLicenseActivationTimestamp();
                     $this->enqueueFlushRewriteRules();
 
                     /**
@@ -439,7 +438,7 @@ abstract class AbstractMainPlugin extends AbstractPlugin implements MainPluginIn
                      */
                     add_action(
                         PluginAppHooks::INITIALIZE_APP,
-                        function (string $pluginAppGraphQLServerName) use ($registeredExtensionBaseNameInstances, $justActivatedLicenseExtensionNames): void {
+                        function (string $pluginAppGraphQLServerName) use ($registeredExtensionBaseNameInstances): void {
                             if (
                                 $pluginAppGraphQLServerName === PluginAppGraphQLServerNames::INTERNAL
                                 || $this->initializationException !== null
@@ -447,14 +446,9 @@ abstract class AbstractMainPlugin extends AbstractPlugin implements MainPluginIn
                                 return;
                             }
 
-                            if (in_array($this->pluginSlug, $justActivatedLicenseExtensionNames)) {
-                                $this->isLicenseJustActivated();
-                            }
+                            $this->anyCommercialLicenseJustActivated();
                             foreach ($registeredExtensionBaseNameInstances as $extensionInstance) {
-                                if (!in_array($extensionInstance->getPluginSlug(), $justActivatedLicenseExtensionNames)) {
-                                    continue;
-                                }
-                                $extensionInstance->isLicenseJustActivated();
+                                $extensionInstance->anyCommercialLicenseJustActivated();
                             }
                         },
                         PluginLifecyclePriorities::AFTER_EVERYTHING
