@@ -4,18 +4,6 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 12.0.0 - DATE
-
-### Added
-
-- Documentation for new Elementor Premium Extension (#3052)
-
-### Breaking changes
-
-- Plugin constructor signature receives nullable `commitHash` param (#3056)
-- Store the extension names whose license has just been activated (instead of a timestamp) to install setup data (#3057)
-- Renamed `getCommentPostID` to `getCommentCustomPostID` (#3073)
-
 ## 11.3.0 - DATE
 
 ### Added
@@ -28,6 +16,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
   - Users (#3072)
   - Comments (#3072)
 - Type `ListValueJSONObject` (#3060)
+- Documentation for new field `_objectRecursiveMerge`, from the **Schema Functions** extension (#3074)
 
 ### Improvements
 

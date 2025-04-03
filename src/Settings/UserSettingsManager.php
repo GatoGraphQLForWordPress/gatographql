@@ -8,7 +8,6 @@ use GatoGraphQL\GatoGraphQL\Facades\Registries\SystemModuleRegistryFacade;
 use GatoGraphQL\GatoGraphQL\Facades\Registries\SystemSettingsCategoryRegistryFacade;
 use GatoGraphQL\GatoGraphQL\Facades\Settings\OptionNamespacerFacade;
 use GatoGraphQL\GatoGraphQL\Facades\TimestampSettingsManagerFacade;
-use GatoGraphQL\GatoGraphQL\Facades\TransientSettingsManagerFacade;
 
 use function get_option;
 use function uniqid;
@@ -18,8 +17,9 @@ class UserSettingsManager implements UserSettingsManagerInterface
 {
     private const TIMESTAMP_CONTAINER = 'container';
     private const TIMESTAMP_OPERATIONAL = 'operational';
-    private const TRANSIENT_LICENSE_ACTIVATION = 'license-activation';
     private const TIMESTAMP_LICENSE_CHECK = 'license-check';
+    private const TIMESTAMP_LICENSE_ACTIVATION = 'license-activation';
+
     /**
      * Cache the values in memory
      *
@@ -28,16 +28,11 @@ class UserSettingsManager implements UserSettingsManagerInterface
     protected array $options = [];
 
     private ?TimestampSettingsManagerInterface $timestampSettingsManager = null;
-    private ?TransientSettingsManagerInterface $transientSettingsManager = null;
     private ?OptionNamespacerInterface $optionNamespacer = null;
 
     final protected function getTimestampSettingsManager(): TimestampSettingsManagerInterface
     {
         return $this->timestampSettingsManager ??= TimestampSettingsManagerFacade::getInstance();
-    }
-    final protected function getTransientSettingsManager(): TransientSettingsManagerInterface
-    {
-        return $this->transientSettingsManager ??= TransientSettingsManagerFacade::getInstance();
     }
     final protected function getOptionNamespacer(): OptionNamespacerInterface
     {
@@ -174,38 +169,30 @@ class UserSettingsManager implements UserSettingsManagerInterface
     }
 
     /**
-     * Retrieve the extension names whose commercial license has
-     * just been activated.
-     *
-     * @return string[]|null The license-just-activated extension names
+     * Timestamp of the latest activation of any commercial license
      */
-    public function getJustActivatedLicenseTransientExtensionNames(): ?array
+    public function getLicenseActivationTimestamp(): ?int
     {
-        return $this->getTransientSettingsManager()->getTransient(self::TRANSIENT_LICENSE_ACTIVATION);
+        return $this->getTimestamp(self::TIMESTAMP_LICENSE_ACTIVATION);
     }
 
     /**
-     * Store the extension names whose commercial license has
-     * just been activated.
-     *
-     * @param string[] $extensionSlugs
+     * Store the current time to indicate the latest activation
+     * of any commercial license
      */
-    public function storeJustActivatedLicenseTransient(array $extensionSlugs): void
+    public function storeLicenseActivationTimestamp(): void
     {
-        $this->getTransientSettingsManager()->storeTransient(
-            self::TRANSIENT_LICENSE_ACTIVATION,
-            $extensionSlugs
-        );
+        $this->storeTimestamp(self::TIMESTAMP_LICENSE_ACTIVATION);
     }
 
     /**
-     * Remove the flag to indicate the extension names whose commercial
-     * license has just been activated.
+     * Remove the flag to indicate the latest activation
+     * of any commercial license
      */
-    public function removeJustActivatedLicenseTransient(): void
+    public function removeLicenseActivationTimestamp(): void
     {
-        $this->getTransientSettingsManager()->removeTransients([
-            self::TRANSIENT_LICENSE_ACTIVATION,
+        $this->getTimestampSettingsManager()->removeTimestamps([
+            self::TIMESTAMP_LICENSE_ACTIVATION,
         ]);
     }
 
