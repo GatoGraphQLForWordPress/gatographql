@@ -1,6 +1,6 @@
 === Gato GraphQL ===
 Contributors: gatographql, leoloso
-Tags: decoupled, GraphQL, headless, webhook, api, wp-cli, rest, rest-api, react, astro, wpgraphql, Next.js
+Tags: decoupled, GraphQL, headless, webhook, api, wp-cli, rest, rest-api, react, astro, wpgraphql, nextjs
 Requires at least: 6.1
 Tested up to: 6.8
 Stable tag: 11.2.0
@@ -66,8 +66,6 @@ The available premium extensions are:
 
 [Automation](https://gatographql.com/extensions/automation): Use GraphQL to automate tasks in your app: Execute queries when some event happens, chain queries, and schedule and trigger queries via WP-Cron.
 
-[Elementor](https://gatographql.com/extensions/elementor): Integration with the Elementor plugin, to parse and update data in Elementor pages and templates.
-
 [Events Manager](https://gatographql.com/extensions/events-manager): Integration with the Events Manager plugin, to fetch event data.
 
 [MultilingualPress](https://gatographql.com/extensions/multilingualpress): Integration with the MultilingualPress plugin, to fetch multilingual data.
@@ -87,6 +85,12 @@ The plugins are:
 [Gato AI Translations for Polylang](https://gatoplugins.com/plugins/ai-translations-for-polylang): Automatically translate all content on your WordPress site, using the LLM of your choice: ChatGPT, Claude, DeepSeek, Mistral AI, DeepL, and Google Translate.
 
 == Frequently Asked Questions ==
+
+= Can I use Gato GraphQL with popular plugins (WooCommerce, ACF, Yoast, etc)? =
+
+Yes, you can. Either there are specific integrations for them (eg: Polylang), of there are elements in the GraphQL schema to interact with generic elements.
+
+For instance, you can use field `customPost` to retrieve WooCommerce products, and field `metaValue` to retrieve Advanced Custom Fields and Yoast SEO metadata.
 
 = Does the plugin provide documentation? =
 
@@ -211,12 +215,6 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 16. The Tutorial section explains how to achieve many objectives, exploring all the elements from the GraphQL schema
 
 == Changelog ==
-
-= 12.0.0 =
-* Added documentation for new Elementor Premium Extension (#3052)
-* Breaking change: Plugin constructor signature receives nullable `commitHash` param (#3056)
-* Breaking change: Store the extension names whose license has just been activated (instead of a timestamp) to install setup data (#3057)
-* Breaking change: Renamed `getCommentPostID` to `getCommentCustomPostID` (#3073)
 
 = 11.3.0 =
 * Added fields `meta: ListValueJSONObject!` and `metaKeys: [String!]!` for types `Comment/CustomPost/TaxonomyTerm/User` (#3060)
