@@ -18,7 +18,7 @@ class Logger implements LoggerInterface
     public function log(string $severity, string $message): void
     {
         if ($severity === LoggerSeverity::ERROR) {
-            $this->logError($message);
+            $this->logSystemError($message);
         }
 
         $sign = match ($severity) {
@@ -28,7 +28,7 @@ class Logger implements LoggerInterface
             LoggerSeverity::WARNING => LoggerSigns::WARNING,
             default => throw new InvalidArgumentException(sprintf('Invalid severity: "%s"', $severity)),
         };
-        $this->logInfo(
+        $this->logOwnStream(
             sprintf(
                 \__('%s %s', 'gatographql'),
                 $sign,
@@ -37,7 +37,7 @@ class Logger implements LoggerInterface
         );
     }
     
-    protected function logError(string $message): void
+    protected function logSystemError(string $message): void
     {
         \error_log(sprintf(
             LoggerSigns::ERROR . ' [%s] %s',
@@ -49,7 +49,7 @@ class Logger implements LoggerInterface
     /**
      * @see https://stackoverflow.com/a/7655379
      */
-    protected function logInfo(string $message): void
+    protected function logOwnStream(string $message): void
     {
         // Check if the Log is enabled, via the Settings
         /** @var ModuleConfiguration */
@@ -80,13 +80,13 @@ class Logger implements LoggerInterface
 
         $dir = \dirname($filename);
         if (!is_dir($dir) && @mkdir($dir, 0777, true) === false) {
-            $this->logError('Can\'t create directory to store log files, under path ' . $dir);
+            $this->logSystemError('Can\'t create directory to store log files, under path ' . $dir);
             return false;
         }
 
         $handle = fopen($filename, "w");
         if ($handle === false) {
-            $this->logError('Can\'t create log file under path ' . $filename);
+            $this->logSystemError('Can\'t create log file under path ' . $filename);
             return false;
         }
         fclose($handle);
