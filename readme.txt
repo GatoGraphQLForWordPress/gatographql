@@ -78,8 +78,6 @@ The available premium extensions are:
 
 [Translation](https://gatographql.com/extensions/translation): Translate a field value using the service provider of your choice, among ChatGPT, Claude, DeepSeek, Mistral AI, DeepL, and Google Translate.
 
-[WooCommerce](https://gatographql.com/extensions/woocommerce): Integration with WooCommerce, to fetch product data.
-
 == Built with Gato GraphQL ==
 
 All the plugins by [Gato Plugins](https://gatoplugins.com) use Gato GraphQL under the hook.
@@ -248,6 +246,7 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 * Fixed plugin not working with PHP 7.4 (#3182)
 * Fixed updating posts storing wrong date (#3186)
 * Fixed - User authentication when executing query triggered via the WP REST API (#3187)
+* Fixed - Requesting GraphQL endpoint using Application Passwords didn't work when WooCommerce is installed (#3195)
 
 = 13.2.0 =
 * Added field `CustomPost.rawStatus` (as it exists in the database, eg: `publish` instead of `future`) (#3142)
