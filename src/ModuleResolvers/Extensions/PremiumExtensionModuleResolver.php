@@ -24,7 +24,6 @@ class PremiumExtensionModuleResolver extends AbstractExtensionModuleResolver
     public const OPENROUTER_TRANSLATION = Plugin::NAMESPACE . '\\extensions\\openrouter-translation';
     public const POLYLANG = Plugin::NAMESPACE . '\\extensions\\polylang';
     public const TRANSLATION = Plugin::NAMESPACE . '\\extensions\\translation';
-    public const WOOCOMMERCE = Plugin::NAMESPACE . '\\extensions\\woocommerce';
 
     /**
      * @return string[]
@@ -46,7 +45,6 @@ class PremiumExtensionModuleResolver extends AbstractExtensionModuleResolver
             self::OPENROUTER_TRANSLATION,
             self::POLYLANG,
             self::TRANSLATION,
-            self::WOOCOMMERCE,
         ];
     }
 
@@ -67,7 +65,6 @@ class PremiumExtensionModuleResolver extends AbstractExtensionModuleResolver
             self::OPENROUTER_TRANSLATION => \__('OpenRouter Translation', 'gatographql'),
             self::POLYLANG => \__('Polylang', 'gatographql'),
             self::TRANSLATION => \__('Translation', 'gatographql'),
-            self::WOOCOMMERCE => \__('WooCommerce', 'gatographql'),
             default => $module,
         };
     }
@@ -89,7 +86,6 @@ class PremiumExtensionModuleResolver extends AbstractExtensionModuleResolver
             self::OPENROUTER_TRANSLATION => \__('Translate content to multiple languages using the OpenRouter API.', 'gatographql'),
             self::POLYLANG => \__('Integration with plugin "Polylang", adding fields to the schema to fetch multilingual data.', 'gatographql'),
             self::TRANSLATION => \__('Translate content to multiple languages using any provider\'s API.', 'gatographql'),
-            self::WOOCOMMERCE => \__('Integration with WooCommerce, to fetch product data.', 'gatographql'),
             default => parent::getDescription($module),
         };
     }
