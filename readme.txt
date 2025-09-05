@@ -78,8 +78,6 @@ The available premium extensions are:
 
 [Translation](https://gatographql.com/extensions/translation): Translate a field value using the service provider of your choice, among ChatGPT, Claude, DeepSeek, Mistral AI, DeepL, and Google Translate.
 
-[WooCommerce](https://gatographql.com/extensions/woocommerce): Integration with WooCommerce, to fetch product data.
-
 == Built with Gato GraphQL ==
 
 All the plugins by [Gato Plugins](https://gatoplugins.com) use Gato GraphQL under the hook.
@@ -245,6 +243,7 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 * Validate the domain in the active license corresponds to the current site (for commercial extensions) (#3192)
 * Don't trigger license check if never run before (#3194)
 * Set `WithMeta.metaKeys` as sensitive field (#3197)
+* Move `isOneOf` introspection field out of `extensions` (as feature has been merged to GraphQL spec) (#3198)
 * Fixed bug where querying `post(by: { id: 0 })` returns `null` (instead of the post in the loop) (#3165)
 * Fixed plugin not working with PHP 7.4 (#3182)
 * Fixed updating posts storing wrong date (#3186)

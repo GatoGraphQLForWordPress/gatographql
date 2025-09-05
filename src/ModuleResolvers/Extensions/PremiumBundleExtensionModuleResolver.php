@@ -19,7 +19,6 @@ class PremiumBundleExtensionModuleResolver extends AbstractBundleExtensionModule
     public const MULTILINGUALPRESS = Plugin::NAMESPACE . '\\bundle-extensions\\multilingualpress';
     public const POLYLANG = Plugin::NAMESPACE . '\\bundle-extensions\\polylang';
     public const TRANSLATION = Plugin::NAMESPACE . '\\bundle-extensions\\translation';
-    public const WOOCOMMERCE = Plugin::NAMESPACE . '\\bundle-extensions\\woocommerce';
 
     /**
      * @return string[]
@@ -37,7 +36,6 @@ class PremiumBundleExtensionModuleResolver extends AbstractBundleExtensionModule
             self::MULTILINGUALPRESS,
             self::POLYLANG,
             self::TRANSLATION,
-            self::WOOCOMMERCE,
         ];
     }
 
@@ -51,7 +49,6 @@ class PremiumBundleExtensionModuleResolver extends AbstractBundleExtensionModule
             self::MULTILINGUALPRESS => \__('MultilingualPress', 'gatographql'),
             self::POLYLANG => \__('Polylang', 'gatographql'),
             self::TRANSLATION => \__('Translation', 'gatographql'),
-            self::WOOCOMMERCE => \__('WooCommerce', 'gatographql'),
             default => $module,
         };
     }
@@ -66,7 +63,6 @@ class PremiumBundleExtensionModuleResolver extends AbstractBundleExtensionModule
             self::MULTILINGUALPRESS => \__('Integration with plugin "MultilingualPress", adding fields to the schema to fetch multilingual data.', 'gatographql'),
             self::POLYLANG => \__('Integration with plugin "Polylang", adding fields to the schema to fetch multilingual data.', 'gatographql'),
             self::TRANSLATION => \__('Translate content to multiple languages using the service provider of your choice, among ChatGPT, Claude, DeepSeek, Mistral AI, DeepL, and Google Translate.', 'gatographql'),
-            self::WOOCOMMERCE => \__('Integration with WooCommerce, to fetch product data.', 'gatographql'),
             default => parent::getDescription($module),
         };
     }
@@ -88,7 +84,6 @@ class PremiumBundleExtensionModuleResolver extends AbstractBundleExtensionModule
             self::MULTILINGUALPRESS => $imagePathURL . '/multilingualpress.webp',
             self::POLYLANG => $imagePathURL . '/polylang.webp',
             self::TRANSLATION => $imagePathURL . '/translation.svg',
-            self::WOOCOMMERCE => $imagePathURL . '/woocommerce.svg',
             default => parent::getLogoURL($module),
         };
     }
@@ -126,9 +121,6 @@ class PremiumBundleExtensionModuleResolver extends AbstractBundleExtensionModule
                 PremiumExtensionModuleResolver::MISTRALAI_TRANSLATION,
                 PremiumExtensionModuleResolver::OPENROUTER_TRANSLATION,
                 PremiumExtensionModuleResolver::TRANSLATION,
-            ],
-            self::WOOCOMMERCE => [
-                PremiumExtensionModuleResolver::WOOCOMMERCE,
             ],
             default => [],
         };
