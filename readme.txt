@@ -3,7 +3,7 @@ Contributors: gatographql, leoloso
 Tags: decoupled, GraphQL, headless, webhook, api, wp-cli, rest, rest-api, react, astro, wpgraphql, nextjs
 Requires at least: 6.1
 Tested up to: 6.8
-Stable tag: 15.0.0
+Stable tag: 15.0.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -77,8 +77,6 @@ The available premium extensions are:
 [Polylang](https://gatographql.com/extensions/polylang): Integration with the Polylang plugin, adding fields and filters to select the language when fetching data on a multilingual site.
 
 [Translation](https://gatographql.com/extensions/translation): Translate a field value using the service provider of your choice, among ChatGPT, Claude, DeepSeek, Mistral AI, DeepL, and Google Translate.
-
-[WooCommerce](https://gatographql.com/extensions/woocommerce): Integration with WooCommerce, to fetch product data.
 
 == Built with Gato GraphQL ==
 
@@ -222,18 +220,7 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
-= 15.1.0 =
-* Added WooCommerce extension to docs (#3195)
-* Added `CodeNameJSONObject` input type (#3210)
-* Print descriptions in introspection for EnumStringScalarTypes (#3211)
-* Show "No values available" in description for EnumStrings (#a3dafbf7)
-* Allow returning null values in field connections of type List (#3212)
-* Fixed - Cast post ID to int (for if 3rd-party CPT returns it as string) (#3213)
-* Fixed - Meta not returned as array (#3214)
-* Fixed - QueryableInterface adapter (#3215)
-* Fixed - CustomPostMeta module depends on Meta module (#3216)
-
-= 15.0.0 =
+= 14.1.0 =
 * Breaking change: Removed the BasicService trait (#3208)
 * Add helper methods to check if requesting public GraphQL API (#3207)
 * Added - Chain defining environment settings across extensions (#3209)
