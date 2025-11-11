@@ -5,14 +5,11 @@ declare(strict_types=1);
 namespace GatoGraphQL\GatoGraphQL\WPCLI;
 
 use GatoGraphQL\GatoGraphQL\Facades\LogEntryCounterSettingsManagerFacade;
-use GatoGraphQL\GatoGraphQL\Module;
-use GatoGraphQL\GatoGraphQL\ModuleConfiguration;
 use GatoGraphQL\GatoGraphQL\Services\MenuPages\LogsMenuPage;
 use GatoGraphQL\GatoGraphQL\Settings\LogEntryCounterSettingsManagerInterface;
 use GatoGraphQL\GatoGraphQL\StaticHelpers\WPCLIHelpers;
-use PoPSchema\Logger\Constants\LoggerSeverity;
-use PoP\ComponentModel\App;
 use PoP\Root\Facades\Instances\InstanceManagerFacade;
+use PoPSchema\Logger\Constants\LoggerSeverity;
 use WP_CLI;
 
 use function __;
@@ -206,7 +203,7 @@ abstract class AbstractWPCLICommand
      */
     protected function maybePrintLogsMessage(array $logCountBySeverityDelta): void
     {
-        $severitiesWithLogCountDelta = $this->getSeveritiesWithLogCountDelta($logCountBySeverityDelta, false);
+        $severitiesWithLogCountDelta = array_keys(array_filter($logCountBySeverityDelta, fn (int $logCountDelta): bool => $logCountDelta > 0));
         if ($severitiesWithLogCountDelta === []) {
             return;
         }
@@ -248,38 +245,5 @@ abstract class AbstractWPCLICommand
             return;
         }
         $this->log($message);
-    }
-
-    /**
-     * Use the severities enabled for the LogCountBadge.
-     *
-     * @param array<string,int> $logCountBySeverityDelta
-     * @return string[]
-     */
-    protected function getSeveritiesWithLogCountDelta(array $logCountBySeverityDelta, bool $onlyIncludeLogNotificationsSeverities): array
-    {
-        if ($onlyIncludeLogNotificationsSeverities) {
-            /** @var ModuleConfiguration */
-            $moduleConfiguration = App::getModule(Module::class)->getConfiguration();
-            if (!$moduleConfiguration->enableLogCountBadges()) {
-                return [];
-            }
-
-            $severities = $moduleConfiguration->enableLogCountBadgesBySeverity();
-            if ($severities === []) {
-                return [];
-            }
-
-            $logCountBySeverityDelta = array_filter(
-                $logCountBySeverityDelta,
-                fn (string $severity): bool => in_array($severity, $severities),
-                ARRAY_FILTER_USE_KEY
-            );
-        }
-
-        return array_keys(array_filter(
-            $logCountBySeverityDelta,
-            fn (int $logCountDelta): bool => $logCountDelta > 0
-        ));
     }
 }

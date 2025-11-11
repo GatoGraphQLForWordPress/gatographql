@@ -238,10 +238,10 @@ class WPDataModelProvider extends AbstractBasicService implements WPDataModelPro
 
         $possibleTaxonomyObjects = array_filter(
             $possibleTaxonomyObjects,
-            fn (WP_Taxonomy $taxonomy) => array_intersect(
+            fn (WP_Taxonomy $taxonomy) => array_diff(
                 $taxonomy->object_type,
                 $queryableCustomPostTypes
-            ) !== []
+            ) === []
         );
 
         $possibleTaxonomyNameObjects = [];
