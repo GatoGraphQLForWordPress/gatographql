@@ -222,9 +222,8 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
-= 15.3.0 =
-* Added - MetaNamespacer service (#3241)
-* Pass extensions to the response error via FeedbackItemResolution (#3240)
+= 15.2.1 =
+* Fixed - Issue in WordPress 6.9 where "\\" in blocks is not serialized properly (#3240)
 
 = 15.2.0 =
 * Added - Field `_urlToCustomPostID` to get the custom post ID from a URL (#3229)

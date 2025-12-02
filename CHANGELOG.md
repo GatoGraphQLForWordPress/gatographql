@@ -4,15 +4,11 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 15.3.0 - DATE
+## 15.2.1 - 03/12/2025
 
-### Added
+### Fixed
 
-- MetaNamespacer service (#3241)
-
-### Improvements
-
-- Pass extensions to the response error via FeedbackItemResolution (#3240)
+- Issue in WordPress 6.9 where "\\" in blocks is not serialized properly (#3240)
 
 ## 15.2.0 - 26/11/2025
 
