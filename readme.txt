@@ -222,10 +222,8 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
-= 15.3.0 =
-* Added - MetaNamespacer service (#3241)
-* Pass extensions to the response error via FeedbackItemResolution (#3240)
-* Allow to execute Custom Settings bulk action after filtering posts (for standalone plugins) (#3242)
+= 15.2.2 =
+* Fixed - Issue in WordPress 6.9 where "\\" in blocks is not serialized properly (take #2) (#3246)
 
 = 15.2.1 =
 * Fixed - Issue in WordPress 6.9 where "\\" in blocks is not serialized properly (#3240)
