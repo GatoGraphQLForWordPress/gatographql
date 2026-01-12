@@ -312,7 +312,7 @@ abstract class AbstractCustomPostType extends AbstractAutomaticallyInstantiatedS
      */
     protected function disableVisualEditor(bool $canRichEdit): bool
     {
-        if ($this->isEditingThisPostType()) {
+        if ($this->isEditingThisCustomPostType()) {
             return false;
         }
         return $canRichEdit;
@@ -323,7 +323,7 @@ abstract class AbstractCustomPostType extends AbstractAutomaticallyInstantiatedS
      */
     protected function removeMediaButtons(): void
     {
-        if (!$this->isEditingThisPostType()) {
+        if (!$this->isEditingThisCustomPostType()) {
             return;
         }
 
@@ -344,7 +344,7 @@ abstract class AbstractCustomPostType extends AbstractAutomaticallyInstantiatedS
      */
     protected function removeMediaButtonsContext(string $context): string
     {
-        if ($this->isEditingThisPostType()) {
+        if ($this->isEditingThisCustomPostType()) {
             return '';
         }
         return $context;
@@ -359,7 +359,7 @@ abstract class AbstractCustomPostType extends AbstractAutomaticallyInstantiatedS
      */
     protected function removeQuicktagsButtons(array $qtInit, string $editorId): array
     {
-        if (!$this->isEditingThisPostType()) {
+        if (!$this->isEditingThisCustomPostType()) {
             return $qtInit;
         }
 
@@ -369,12 +369,12 @@ abstract class AbstractCustomPostType extends AbstractAutomaticallyInstantiatedS
     }
 
     /**
-     * Check if we're currently editing this post type
+     * Check if we're currently editing this custom post type
      */
-    protected function isEditingThisPostType(): bool
+    protected function isEditingThisCustomPostType(): bool
     {
         $screen = \get_current_screen();
-        if ($screen && isset($screen->post_type) && $screen->post_type === $this->getCustomPostType()) {
+        if ($screen !== null && $screen->post_type === $this->getCustomPostType()) {
             return true;
         }
 
@@ -398,7 +398,7 @@ abstract class AbstractCustomPostType extends AbstractAutomaticallyInstantiatedS
      */
     protected function setDefaultEditorContent(): void
     {
-        if (!$this->isEditingThisPostType()) {
+        if (!$this->isEditingThisCustomPostType()) {
             return;
         }
 
