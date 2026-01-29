@@ -32,7 +32,7 @@ class Startup {
                     printf(
                         '<div class="notice notice-error"><p>%s</p>%s</div>',
                         sprintf(
-                            __('Plugin <strong>%1$s</strong> requires at least <strong>%2$s</strong> of memory, however the server\'s PHP memory limit is set to <strong>%3$s</strong>. Please increase the memory limit to load %1$s.', 'gatographql'),
+                            __('Plugin <strong>%1$s</strong> requires at least <strong>%2$s</strong> of memory, however the server\'s PHP memory limit is set to <strong>%3$s</strong>. Please increase the memory limit to load the plugin.', 'gatographql'),
                             $pluginName,
                             $minRequiredPHPMemoryLimit,
                             $phpMemoryLimit
@@ -40,7 +40,7 @@ class Startup {
                         $url ? sprintf(
                             '<p><a href="%s" target="_blank">%s</a></p>',
                             $url,
-                            __('Browse documentation', 'gatographql')
+                            __('Browse documentation&#x2197;', 'gatographql')
                         ) : ''
                     );
                 });
