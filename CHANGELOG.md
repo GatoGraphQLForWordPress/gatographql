@@ -4,16 +4,6 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 17.1.0 - DATE
-
-### Improvements
-
-- Updated Translation extension docs on using a self-hosted LLM (#3282)
-
-### Fixed
-
-- JetEngine: Fix missing images in docs (#3279)
-
 ## 17.0.0 - 03/03/2026
 
 ### Breaking changes

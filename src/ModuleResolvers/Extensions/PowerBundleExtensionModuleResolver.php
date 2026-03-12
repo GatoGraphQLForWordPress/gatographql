@@ -228,7 +228,6 @@ class PowerBundleExtensionModuleResolver extends AbstractBundleExtensionModuleRe
                 PremiumExtensionModuleResolver::MULTILINGUALPRESS,
                 PremiumExtensionModuleResolver::OPENROUTER_TRANSLATION,
                 PremiumExtensionModuleResolver::POLYLANG,
-                PremiumExtensionModuleResolver::SELF_HOSTED_LLM_TRANSLATION,
                 PremiumExtensionModuleResolver::TRANSLATION,
                 PremiumExtensionModuleResolver::WOOCOMMERCE,
             ],
