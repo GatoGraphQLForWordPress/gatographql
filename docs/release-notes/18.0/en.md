@@ -1,4 +1,8 @@
-# Release Notes: 17.2
+# Release Notes: 18.0
+
+### Breaking changes
+
+- Changed namespace for packages in Gato GraphQL extensions (HTTP Client/PHP Constants and Environment Variables via Schema)
 
 ### Added
 

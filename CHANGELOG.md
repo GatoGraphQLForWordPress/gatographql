@@ -4,7 +4,11 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 17.2.0 - DATE
+## 18.0.0 - DATE
+
+### Breaking changes
+
+- Changed namespace for packages in Gato GraphQL extensions (HTTP Client/PHP Constants and Environment Variables via Schema)
 
 ### Added
 
