@@ -3,7 +3,7 @@ Contributors: gatographql, leoloso
 Tags: decoupled, GraphQL, headless, webhook, api, wp-cli, rest, rest-api, react, vue, tailwind, astro, wpgraphql, nextjs
 Requires at least: 6.1
 Tested up to: 7.0
-Stable tag: 18.0.0
+Stable tag: 18.0.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -224,8 +224,7 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
-= 18.1.0 =
-* Improved - Updated docs for the Schema Functions extension (#3314)
+= 18.0.1 =
 * Fixed - Replace non-standard spaces in block attributes when doing useHTML5Parser (#3313)
 
 = 18.0.0 =
