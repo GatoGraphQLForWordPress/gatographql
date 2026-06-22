@@ -224,7 +224,7 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
-= 18.1.0 =
+= 19.0.0 =
 * Added - The ability to register custom WordPress REST API controllers/endpoints via the service container (#3330)
 * Added - The ability to execute queries as a DRY RUN, marked with a [DRY-RUN] prefix in the logs (#3330)
 * Added - The "External Tools" settings category, for extensions to surface tooling/informational sections (#3330)
@@ -242,6 +242,7 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 * Improved - The plugin is now translated to Vietnamese (vi) (#3336)
 * Improved - The plugin is now translated to Thai (th) (#3337)
 * Improved - The plugin is now translated to Bahasa Indonesia (id_ID) (#3338)
+* Improved - The plugin is now translated to Russian (ru_RU) (#3339)
 * Improved - Completed translations for the existing locales and resynced the block-editor JS language packs with the catalog (#3333)
 * Improved - Do not show All Inclusive bundle in Extension docs (#3321)
 * Improved - Upgraded GraphiQL to version 5.2.3 (#3323)
