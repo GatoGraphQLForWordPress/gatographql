@@ -4,11 +4,11 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 19.3.0 - DATE
+## 19.2.1 - DATE
 
-### Added
+### Improvements
 
-- Documentation for the FluentCart integration (#3379)
+- Tested up to WordPress 7.1 (#aa2cdc8d)
 
 ## 19.2.0 - 11/08/2026
 
