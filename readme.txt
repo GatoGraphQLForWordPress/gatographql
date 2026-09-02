@@ -247,6 +247,11 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
+= 19.3.0 =
+* Added - Documentation for the FluentCart integration (#3379)
+* Improved - The plugin's cached AI model data, its log counts and its internal transients are no longer loaded on every request, only where they are read (#3387)
+* Improved - The stored plugin and extension versions are no longer loaded on every request, only in the wp-admin where they are read (#3388)
+
 = 19.2.2 =
 * Security - Fixed a privilege escalation vulnerability where a logged-in user could modify protected user meta keys (such as their own role/capabilities) through the user meta mutations to gain higher privileges (#3389)
 * Security - Protected meta keys (WordPress internal keys, such as those prefixed with <code>_</code>) can no longer be written through the custom post, comment and taxonomy meta mutations either (#3389)
