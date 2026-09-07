@@ -39,13 +39,11 @@ use WP_Upgrader;
 use function __;
 use function add_action;
 use function do_action;
-use function function_exists;
 use function get_called_class;
 use function get_option;
 use function is_admin;
 use function update_option;
 use function wp_enqueue_style;
-use function wp_set_option_autoload;
 
 abstract class AbstractMainPlugin extends AbstractPlugin implements MainPluginInterface
 {
@@ -339,7 +337,7 @@ abstract class AbstractMainPlugin extends AbstractPlugin implements MainPluginIn
         $option = $optionNamespacer->namespaceOption(PluginOptions::PLUGIN_VERSIONS);
         $storedPluginVersions = get_option($option, []);
         unset($storedPluginVersions[$pluginBaseName]);
-        update_option($option, $storedPluginVersions, false);
+        update_option($option, $storedPluginVersions);
     }
 
 
@@ -696,7 +694,7 @@ abstract class AbstractMainPlugin extends AbstractPlugin implements MainPluginIn
                          *
                          * @see https://github.com/GatoGraphQL/GatoGraphQL/issues/2631
                          */
-                        update_option($option, $storedPluginVersions, false);
+                        update_option($option, $storedPluginVersions);
 
                         if ($isMainPluginJustActivated) {
                             $this->pluginJustActivated();
@@ -833,71 +831,7 @@ abstract class AbstractMainPlugin extends AbstractPlugin implements MainPluginIn
     {
         parent::pluginJustUpdated($newVersion, $previousVersion);
 
-        $this->stopAutoloadingTheOptionsThatNeedNotBe();
         $this->revalidateCommercialExtensionActivatedLicenses();
-    }
-
-    /**
-     * Execute logic after the plugin has just been activated
-     *
-     * The migration below runs here as well as on an update, because the
-     * common way of updating never reaches the update path.
-     *
-     * Deactivating removes the plugin's entry from the stored versions, so
-     * the deactivate/replace/activate sequence — which is how a plugin
-     * uploaded as a zip is installed — comes back with nothing to compare
-     * against and is read as a first activation rather than as an update.
-     * The autoload flags were then never migrated on exactly the sites that
-     * had the most to gain from it, and no later run would try again:
-     * `update_option()` returns at its "the value is the same" check before
-     * it looks at the flag, so an option whose value has settled keeps
-     * whatever it was first written with, indefinitely.
-     *
-     * It is cheap and it is idempotent, so running it on both paths costs a
-     * site nothing and is the difference between a fix that lands and one
-     * that only lands sometimes.
-     */
-    public function pluginJustActivated(): void
-    {
-        parent::pluginJustActivated();
-
-        $this->stopAutoloadingTheOptionsThatNeedNotBe();
-    }
-
-    /**
-     * The options this plugin writes with `$autoload` set to `false` are
-     * only written that way when their value changes, and that is not the
-     * same as their being migrated.
-     *
-     * `update_option()` returns at its "the value is the same" check before
-     * it ever looks at the autoload argument, so passing `false` never flips
-     * a row already stored as autoloaded unless the value happens to change
-     * at the same moment. The one that matters most is the AI model
-     * catalogue: it is refetched every few days, and when the provider's
-     * list has not changed the array written back is identical — so the
-     * hundreds of kilobytes stayed autoloaded on every page load of the site,
-     * indefinitely, while the release note said they would stop.
-     *
-     * `wp_set_option_autoload()` sets the flag whatever the value is. It
-     * arrived in WordPress 6.4 and this plugin supports older, so a site
-     * without it keeps the previous behaviour rather than failing.
-     */
-    protected function stopAutoloadingTheOptionsThatNeedNotBe(): void
-    {
-        if (!function_exists('wp_set_option_autoload')) {
-            return;
-        }
-
-        $optionNamespacer = OptionNamespacerFacade::getInstance();
-        $options = [
-            Options::JSON_DATA,
-            Options::LOG_COUNTS,
-            Options::TRANSIENTS,
-            PluginOptions::PLUGIN_VERSIONS,
-        ];
-        foreach ($options as $option) {
-            wp_set_option_autoload($optionNamespacer->namespaceOption($option), false);
-        }
     }
 
     /**
