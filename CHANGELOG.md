@@ -4,6 +4,19 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 20.0.0 - DATE
+
+## 19.3.0 - DATE
+
+### Added
+
+- Documentation for the FluentCart integration (#3379)
+
+### Improvements
+
+- The plugin's cached AI model data, its log counts and its internal transients are no longer loaded on every request, only where they are read (#3387)
+- The stored plugin and extension versions are no longer loaded on every request, only in the wp-admin where they are read (#3388)
+
 ## 19.2.4 - 07/09/2026
 
 ### Security
