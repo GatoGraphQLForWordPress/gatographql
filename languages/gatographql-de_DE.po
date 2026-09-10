@@ -12274,14 +12274,14 @@ msgstr "<strong>Kompatibel</strong> mit Ihrer WordPress-Version"
 msgid "There are no items to be configured"
 msgstr "Es gibt keine zu konfigurierenden Elemente"
 
-#: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractSettingsMenuPage.php:525
+#: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractSettingsMenuPage.php:527
 #: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractTableMenuPage.php:20
 #: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractVerticalTabDocsMenuPage.php:208
 #, php-format
 msgid "%s — %s"
 msgstr "%s — %s"
 
-#: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractSettingsMenuPage.php:884
+#: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractSettingsMenuPage.php:899
 #, php-format
 msgid "Save All Changes ('%s' tab)"
 msgstr "Alle Änderungen speichern (Registerkarte '%s')"
@@ -12729,11 +12729,11 @@ msgstr "Support wird Kunden mit einer aktiven Lizenz von %s bereitgestellt."
 msgid "Send your message to our support team:"
 msgstr "Senden Sie Ihre Nachricht an unser Support-Team:"
 
-#: GatoGraphQLStandaloneForWP/plugin-packages/gatographql/src/Services/MenuPages/AbstractExecuteActionWithCustomSettingsMenuPage.php:86
+#: GatoGraphQLStandaloneForWP/plugin-packages/gatographql/src/Services/MenuPages/AbstractExecuteActionWithCustomSettingsMenuPage.php:88
 msgid "No IDs were selected."
 msgstr "Es wurden keine IDs ausgewählt."
 
-#: GatoGraphQLStandaloneForWP/plugin-packages/gatographql/src/Services/MenuPages/AbstractExecuteActionWithCustomSettingsMenuPage.php:92
+#: GatoGraphQLStandaloneForWP/plugin-packages/gatographql/src/Services/MenuPages/AbstractExecuteActionWithCustomSettingsMenuPage.php:94
 #, php-format
 msgid "The following IDs were selected: <strong>%s</strong>"
 msgstr "Die folgenden IDs wurden ausgewählt: <strong>%s</strong>"
@@ -13693,13 +13693,13 @@ msgstr "URL-Skalar, z. B. https://mysite.com/my-fabulous-page"
 msgid "Custom scalar representing an XML string"
 msgstr "Benutzerdefinierter Skalar, der eine XML-Zeichenkette repräsentiert"
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:251
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:238
 msgid "Cannot provide blocks to exclude and include at the same time"
 msgstr ""
 "Blöcke zum Ausschließen und Einschließen können nicht gleichzeitig angegeben "
 "werden"
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:268
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:255
 #, php-format
 msgid ""
 "Error parsing post ID %d: This post does not appear to contain block content."
@@ -13707,7 +13707,7 @@ msgstr ""
 "Fehler beim Parsen der Beitrags-ID %d: Dieser Beitrag scheint keinen Block-"
 "Inhalt zu enthalten."
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:271
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:258
 msgid ""
 "This fields is designed to parse Gutenberg blocks and can not read classic "
 "editor content."
@@ -13715,7 +13715,7 @@ msgstr ""
 "Dieses Feld ist dafür ausgelegt, Gutenberg-Blöcke zu parsen, und kann keine "
 "Classic-Editor-Inhalte lesen."
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:316
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:303
 msgid ""
 "This post either does not contain block content, or its block content has "
 "errors. (Edit the post within the WordPress editor, fix the errors, save, "

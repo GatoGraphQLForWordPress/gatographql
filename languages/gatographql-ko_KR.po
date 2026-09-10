@@ -11457,14 +11457,14 @@ msgstr "WordPress 버전과 <strong>호환</strong>됩니다"
 msgid "There are no items to be configured"
 msgstr "구성할 항목이 없습니다"
 
-#: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractSettingsMenuPage.php:525
+#: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractSettingsMenuPage.php:527
 #: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractTableMenuPage.php:20
 #: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractVerticalTabDocsMenuPage.php:208
 #, php-format
 msgid "%s — %s"
 msgstr "%s — %s"
 
-#: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractSettingsMenuPage.php:884
+#: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/AbstractSettingsMenuPage.php:899
 #, php-format
 msgid "Save All Changes ('%s' tab)"
 msgstr "모든 변경 사항 저장 ('%s' 탭)"
@@ -11908,11 +11908,11 @@ msgstr "%s의 활성 라이선스를 보유한 고객에게 지원이 제공됩�
 msgid "Send your message to our support team:"
 msgstr "지원 팀에 메시지를 보내십시오:"
 
-#: GatoGraphQLStandaloneForWP/plugin-packages/gatographql/src/Services/MenuPages/AbstractExecuteActionWithCustomSettingsMenuPage.php:86
+#: GatoGraphQLStandaloneForWP/plugin-packages/gatographql/src/Services/MenuPages/AbstractExecuteActionWithCustomSettingsMenuPage.php:88
 msgid "No IDs were selected."
 msgstr "선택된 ID가 없습니다."
 
-#: GatoGraphQLStandaloneForWP/plugin-packages/gatographql/src/Services/MenuPages/AbstractExecuteActionWithCustomSettingsMenuPage.php:92
+#: GatoGraphQLStandaloneForWP/plugin-packages/gatographql/src/Services/MenuPages/AbstractExecuteActionWithCustomSettingsMenuPage.php:94
 #, php-format
 msgid "The following IDs were selected: <strong>%s</strong>"
 msgstr "다음 ID가 선택되었습니다: <strong>%s</strong>"
@@ -12819,11 +12819,11 @@ msgstr "URL 스칼라(예: https://mysite.com/my-fabulous-page)"
 msgid "Custom scalar representing an XML string"
 msgstr "XML 문자열을 나타내는 커스텀 스칼라"
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:251
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:238
 msgid "Cannot provide blocks to exclude and include at the same time"
 msgstr "제외할 블록과 포함할 블록을 동시에 제공할 수 없습니다"
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:268
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:255
 #, php-format
 msgid ""
 "Error parsing post ID %d: This post does not appear to contain block content."
@@ -12831,7 +12831,7 @@ msgstr ""
 "포스트 ID %d 파싱 오류: 이 포스트에는 블록 콘텐츠가 포함되어 있지 않은 것 같"
 "습니다."
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:271
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:258
 msgid ""
 "This fields is designed to parse Gutenberg blocks and can not read classic "
 "editor content."
@@ -12839,7 +12839,7 @@ msgstr ""
 "이 필드는 Gutenberg 블록을 파싱하도록 설계되었으며 클래식 에디터 콘텐츠를 읽"
 "을 수 없습니다."
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:316
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:303
 msgid ""
 "This post either does not contain block content, or its block content has "
 "errors. (Edit the post within the WordPress editor, fix the errors, save, "
