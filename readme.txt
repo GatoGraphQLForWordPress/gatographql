@@ -247,9 +247,6 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
-= 20.0.0 =
-* Breaking changes - Removed <code>AbstractPlugin::getPluginNamespaceForDB()</code> and <code>PluginMetadata::PLUGIN_NAMESPACE_FOR_DB</code>: an extension overriding the method must override <code>getPluginNamespaceForEntityTypeNames()</code> instead, and one reading the constant must read <code>PLUGIN_NAMESPACE_FOR_ENTITY_TYPE_NAMES</code>
-
 = 19.3.0 =
 * Added - Documentation for the FluentCart integration (#3379)
 * Added - Choose whether the plugin's data is deleted when the plugin is deleted, under Settings => Plugin Management => Uninstall (#3398)
@@ -258,6 +255,7 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 * Improved - Newly activated licenses are stored without the raw response from the marketplace, which nothing reads and made up two thirds of an option loaded on every request (#3397)
 * Fixed - The bulk action with custom settings now runs when a value on the originating screen contains a <code>#</code>, <code>&</code> or <code>=</code>, such as an HTML entity in a stored translation (#3396)
 * Fixed - The values carried to the custom settings page and back no longer gain a backslash before each quote on the way (#3396)
+* Fixed - Filtering users by several emails no longer changes the user queries that run after it in the same request (#3404)
 * Security - The selected IDs shown on the custom settings page are now escaped, closing a reflected XSS where a crafted link could run a script in the wp-admin of the user who followed it (#3396)
 
 = 19.2.4 =
