@@ -1,7 +1,7 @@
 === Gato GraphQL ===
 Contributors: gatographql, leoloso
 Tags: decoupled, GraphQL, headless, webhook, api, wp-cli, rest, rest-api, react, vue, tailwind, astro, wpgraphql, nextjs
-Requires at least: 6.5
+Requires at least: 6.1
 Tested up to: 7.1
 Stable tag: 19.2.4
 Requires PHP: 8.1
@@ -247,10 +247,6 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
-= 20.0.0 =
-* Breaking changes - Bumped the minimum required WordPress version to 6.5 (#3405)
-* Breaking changes - Removed <code>AbstractPlugin::getPluginNamespaceForDB()</code> and <code>PluginMetadata::PLUGIN_NAMESPACE_FOR_DB</code>: an extension overriding the method must override <code>getPluginNamespaceForEntityTypeNames()</code> instead, and one reading the constant must read <code>PLUGIN_NAMESPACE_FOR_ENTITY_TYPE_NAMES</code>
-
 = 19.3.0 =
 * Added - Documentation for the FluentCart integration (#3379)
 * Added - Choose whether the plugin's data is deleted when the plugin is deleted, under Settings => Plugin Management => Uninstall (#3398)
@@ -260,6 +256,7 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 * Fixed - The bulk action with custom settings now runs when a value on the originating screen contains a <code>#</code>, <code>&</code> or <code>=</code>, such as an HTML entity in a stored translation (#3396)
 * Fixed - The values carried to the custom settings page and back no longer gain a backslash before each quote on the way (#3396)
 * Fixed - Filtering users by several emails no longer changes the user queries that run after it in the same request (#3404)
+* Fixed - Log entries whose context holds an HTML entity, such as <code>&quot;</code>, now show that context under "Additional context" (#3406)
 * Security - The selected IDs shown on the custom settings page are now escaped, closing a reflected XSS where a crafted link could run a script in the wp-admin of the user who followed it (#3396)
 
 = 19.2.4 =

@@ -4,13 +4,6 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 20.0.0 - DATE
-
-### Breaking changes
-
-- Bumped the minimum required WordPress version to 6.5 (#3405)
-- Removed `AbstractPlugin::getPluginNamespaceForDB()` and `PluginMetadata::PLUGIN_NAMESPACE_FOR_DB`: an extension overriding the method must override `getPluginNamespaceForEntityTypeNames()` instead, and one reading the constant must read `PLUGIN_NAMESPACE_FOR_ENTITY_TYPE_NAMES`
-
 ## 19.3.0 - DATE
 
 ### Added
@@ -29,6 +22,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - The bulk action with custom settings now runs when a value on the originating screen contains a `#`, `&` or `=`, such as an HTML entity in a stored translation (#3396)
 - The values carried to the custom settings page and back no longer gain a backslash before each quote on the way (#3396)
 - Filtering users by several emails no longer changes the user queries that run after it in the same request (#3404)
+- Log entries whose context holds an HTML entity, such as `&quot;`, now show that context under "Additional context" (#3406)
 
 ### Security
 
