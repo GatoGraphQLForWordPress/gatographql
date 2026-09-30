@@ -8239,7 +8239,7 @@ msgstr "Aktiverad"
 
 #: GatoGraphQLForWP/plugins/gatographql/src/Admin/Tables/ModuleListTable.php:494
 #: GatoGraphQLForWP/plugins/gatographql/src/ModuleResolvers/SchemaTypeModuleResolver.php:387
-#: GatoGraphQLForWP/plugins/gatographql/src/Services/Blocks/SchemaConfigSchemaSettingsBlock.php:31
+#: GatoGraphQLForWP/plugins/gatographql/src/Services/Blocks/SchemaConfigSchemaSettingsBlock.php:32
 #: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/SettingsMenuPage.php:95
 msgid "Settings"
 msgstr "Inställningar"
@@ -11067,7 +11067,7 @@ msgid "comment raw content"
 msgstr "kommentarens råinnehåll"
 
 #: GatoGraphQLForWP/plugins/gatographql/src/ModuleResolvers/SchemaTypeModuleResolver.php:1130
-#: GatoGraphQLForWP/plugins/gatographql/src/Services/Blocks/SchemaConfigSchemaSettingsBlock.php:36
+#: GatoGraphQLForWP/plugins/gatographql/src/Services/Blocks/SchemaConfigSchemaSettingsBlock.php:37
 msgid "Settings entries"
 msgstr "Inställningsposter"
 
@@ -13311,11 +13311,11 @@ msgstr "URL-skalär, t.ex. https://mysite.com/my-fabulous-page"
 msgid "Custom scalar representing an XML string"
 msgstr "Anpassad skalär som representerar en XML-sträng"
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:238
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:269
 msgid "Cannot provide blocks to exclude and include at the same time"
 msgstr "Det går inte att ange block att exkludera och inkludera samtidigt"
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:255
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:286
 #, php-format
 msgid ""
 "Error parsing post ID %d: This post does not appear to contain block content."
@@ -13323,7 +13323,7 @@ msgstr ""
 "Fel vid tolkning av inläggs-ID %d: Det verkar inte som om detta inlägg "
 "innehåller blockinnehåll."
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:258
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:289
 msgid ""
 "This fields is designed to parse Gutenberg blocks and can not read classic "
 "editor content."
@@ -13331,7 +13331,7 @@ msgstr ""
 "Det här fältet är utformat för att tolka Gutenberg-block och kan inte läsa "
 "klassiskt redigeringsinnehåll."
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:303
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:334
 msgid ""
 "This post either does not contain block content, or its block content has "
 "errors. (Edit the post within the WordPress editor, fix the errors, save, "

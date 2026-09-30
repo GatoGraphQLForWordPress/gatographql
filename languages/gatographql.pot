@@ -7105,7 +7105,7 @@ msgstr ""
 
 #: GatoGraphQLForWP/plugins/gatographql/src/Admin/Tables/ModuleListTable.php:494
 #: GatoGraphQLForWP/plugins/gatographql/src/ModuleResolvers/SchemaTypeModuleResolver.php:387
-#: GatoGraphQLForWP/plugins/gatographql/src/Services/Blocks/SchemaConfigSchemaSettingsBlock.php:31
+#: GatoGraphQLForWP/plugins/gatographql/src/Services/Blocks/SchemaConfigSchemaSettingsBlock.php:32
 #: GatoGraphQLForWP/plugins/gatographql/src/Services/MenuPages/SettingsMenuPage.php:95
 msgid "Settings"
 msgstr ""
@@ -9370,7 +9370,7 @@ msgid "comment raw content"
 msgstr ""
 
 #: GatoGraphQLForWP/plugins/gatographql/src/ModuleResolvers/SchemaTypeModuleResolver.php:1130
-#: GatoGraphQLForWP/plugins/gatographql/src/Services/Blocks/SchemaConfigSchemaSettingsBlock.php:36
+#: GatoGraphQLForWP/plugins/gatographql/src/Services/Blocks/SchemaConfigSchemaSettingsBlock.php:37
 msgid "Settings entries"
 msgstr ""
 
@@ -11237,20 +11237,20 @@ msgstr ""
 msgid "Custom scalar representing an XML string"
 msgstr ""
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:238
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:269
 msgid "Cannot provide blocks to exclude and include at the same time"
 msgstr ""
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:255
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:286
 #, php-format
 msgid "Error parsing post ID %d: This post does not appear to contain block content."
 msgstr ""
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:258
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:289
 msgid "This fields is designed to parse Gutenberg blocks and can not read classic editor content."
 msgstr ""
 
-#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:303
+#: WPSchema/packages/block-content-parser/src/BlockContentParser.php:334
 msgid "This post either does not contain block content, or its block content has errors. (Edit the post within the WordPress editor, fix the errors, save, and try again.)"
 msgstr ""
 
