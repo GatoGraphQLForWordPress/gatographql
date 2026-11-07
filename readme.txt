@@ -247,6 +247,10 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 
 == Changelog ==
 
+= 20.1.0 =
+* Improved - Send the <code>GatoPlugins</code> user agent on the license and update requests to the Gato Store (#3463)
+* Improved - Fix the descriptions of the sort input and the input to create a custom post (#3464)
+
 = 20.0.0 =
 * Breaking changes - Bumped the minimum required WordPress version to 6.5 (#3405)
 * Breaking changes - Removed <code>AbstractPlugin::getPluginNamespaceForDB()</code> and <code>PluginMetadata::PLUGIN_NAMESPACE_FOR_DB</code>: an extension overriding the method must override <code>getPluginNamespaceForEntityTypeNames()</code> instead, and one reading the constant must read <code>PLUGIN_NAMESPACE_FOR_ENTITY_TYPE_NAMES</code>
