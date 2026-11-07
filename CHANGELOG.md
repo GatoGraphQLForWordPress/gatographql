@@ -4,13 +4,6 @@ All notable changes to `gatographql` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 20.1.0 - DATE
-
-### Improvements
-
-- Send the `GatoPlugins` user agent on the license and update requests to the Gato Store (#3463)
-- Fix the descriptions of the sort input and the input to create a custom post (#3464)
-
 ## 20.0.0 - 06/11/2026
 
 ### Breaking changes
