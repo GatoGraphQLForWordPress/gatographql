@@ -3,7 +3,7 @@ Contributors: gatographql, leoloso
 Tags: decoupled, GraphQL, headless, webhook, api, wp-cli, rest, rest-api, react, vue, tailwind, astro, wpgraphql, nextjs
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 20.0.1
+Stable tag: 20.0.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -246,12 +246,6 @@ The JavaScript source code for the blocks is under [layers/GatoGraphQLForWP/plug
 16. The Tutorial section explains how to achieve many objectives, exploring all the elements from the GraphQL schema
 
 == Changelog ==
-
-= 20.1.0 =
-* Improved - Send the <code>GatoPlugins</code> user agent on the license and update requests to the Gato Store (#3463)
-* Improved - Fix the descriptions of the sort input and the input to create a custom post (#3464)
-* Improved - The descriptions of the category and tag <code>name</code> fields say that WordPress stores the name HTML-encoded, so <code>&amp;</code> comes back as <code>&amp;amp;</code> (#3466)
-* Improved - The menu mutations take menu items that link to the archive of a post type (<code>itemType: post_type_archive</code>, with the post type as <code>objectType</code>) (#3467)
 
 = 20.0.0 =
 * Breaking changes - Bumped the minimum required WordPress version to 6.5 (#3405)
